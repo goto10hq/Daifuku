@@ -21,7 +21,7 @@
         /// The "no-referrer-when-downgrade" policy sends a full URL along with requests from a TLS-protected environment
         /// settings object to a potentially trustworthy URL, and requests from clients which are not TLS-protected to any origin.
         /// Requests from TLS-protected clients to non- potentially trustworthy URLs, on the other hand, will contain no referrer
-        /// information.A Referer HTTP header will not be sent.
+        /// information. A Referer HTTP header will not be sent.
         /// </summary>
         NoReferrerWhenDowngrade,
 

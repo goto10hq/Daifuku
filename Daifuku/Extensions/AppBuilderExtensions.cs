@@ -61,5 +61,16 @@ namespace Daifuku.Extensions
 
             return app.UseMiddleware<XPoweredBy>(header);
         }
+
+        public static IApplicationBuilder UseDaifuku(this IApplicationBuilder app)
+        {
+            if (app == null)
+                throw new ArgumentNullException(nameof(app));
+
+            return app.UseServerHeader(null)
+                .UseNoMimeSniff()
+                .UseReferrerPolicy(ReferrerPolicy.NoReferrer)
+                .UsePoweredBy(null);
+        }
     }
 }
