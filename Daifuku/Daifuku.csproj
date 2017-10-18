@@ -4,8 +4,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <PackageId>Daifuku</PackageId>
     <Title>Daifuku</Title>
-    <Version>1.0.1</Version>
-    <Authors>frohikey</Authors>  
+    <Version>1.1.0</Version>
+    <Authors>frohikey</Authors>
     <PackageLicenseUrl>https://github.com/goto10hq/Daifuku/blob/master/LICENSE</PackageLicenseUrl>
     <Owners>Goto10</Owners>
     <PackageProjectUrl>https://github.com/goto10hq/Daifuku</PackageProjectUrl>
@@ -15,11 +15,10 @@
     <Copyright>Copyright (c) 2017 Goto10 s.r.o.</Copyright>
     <Company>Goto10</Company>
     <RepositoryUrl>https://github.com/goto10hq/Daifuku</RepositoryUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/goto10hq/Daifuku/master/daifuku-icon.png</PackageIconUrl> 
+    <PackageIconUrl>https://raw.githubusercontent.com/goto10hq/Daifuku/master/daifuku-icon.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.0" />
   </ItemGroup>
-
 </Project>
