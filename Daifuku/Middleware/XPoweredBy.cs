@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 
 namespace Daifuku.Middleware
 {
-    public class XPoweredByHeader
+    public class XPoweredBy
     {
         readonly string _header;
         readonly RequestDelegate _next;
 
-        public XPoweredByHeader(RequestDelegate next, string header = null)
+        public XPoweredBy(RequestDelegate next, string header = null)
         {
             _next = next;
             _header = header;

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Extensions.Primitives;
 
 namespace Daifuku
 {
@@ -13,7 +14,7 @@ namespace Daifuku
         internal const string ServerHeader = "Server";
 
         /// <summary>
-        /// X-Powered-By header.
+        /// X powered by header.
         /// </summary>
         internal const string XPoweredBy = "X-Powered-By";
 
@@ -21,6 +22,16 @@ namespace Daifuku
         /// Referrer policy header.
         /// </summary>
         internal const string ReferrerPolicy = "Referrer-Policy";
+
+        /// <summary>
+        /// X content type options
+        /// </summary>
+        internal const string XContentTypeOptions = "X-Content-Type-Options";
+
+        /// <summary>
+        /// X content type options value for no sniff.
+        /// </summary>
+        internal const string NoSniff = "nosniff";
 
         /// <summary>
         /// Referrers.

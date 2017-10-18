@@ -4,11 +4,11 @@ using Daifuku.Tests.Fixtures;
 
 namespace Daifuku.Tests
 {
-    public class XPoweredByHeader : IClassFixture<HttpFixture>
+    public class XPoweredBy : IClassFixture<HttpFixture>
     {
         HttpFixture _http;
 
-        public XPoweredByHeader(HttpFixture http)
+        public XPoweredBy(HttpFixture http)
         {
             _http = http;
         }
@@ -18,7 +18,7 @@ namespace Daifuku.Tests
         public void XPoweredByHeaderSet(string header)
         {
             _http.Header.SetupSet(a => a[Constants.XPoweredBy] = header).Verifiable();
-            AsyncTools.RunSync(() => new Middleware.XPoweredByHeader(null, header).Invoke(_http.ContextMock.Object));
+            AsyncTools.RunSync(() => new Middleware.XPoweredBy(null, header).Invoke(_http.ContextMock.Object));
             _http.Header.Verify();
         }
     }
