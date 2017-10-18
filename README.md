@@ -20,12 +20,24 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   // or just remove it completely
   app.UseServerHeader();
   
+  // set No Mime Sniff
+  app.UseNoMimeSniff();
+  
+  // set Referrer policy
+  app.UseReferrerPolicy(ReferrerPolicy.NoReferrer);
+
+  // set powered by
+  app.UsePoweredBy("Daifuku!");
+
+  // or just forget all settings and use default pipeline :)
+  app.UseDaifuku();
+
   // configure domain redirects
-  app.UseDomainEnforcement(new System.Collections.Generic.Dictionary<string, string>
+  app.RedirectDomains(new System.Collections.Generic.Dictionary<string, string>
   {
       { "daifu.ku", "www.daifu.ku" },
       { "test.azurewebsites.net", "www.daifu.ku" },
-  });
+  });  
 }
 ```
 
