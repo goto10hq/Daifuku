@@ -26,6 +26,14 @@ namespace Daifuku.Tests
             httpDictionary.SetupSet(a => a[Constants.ServerHeader] = "Goto10").Verifiable();
             AsyncTools.RunSync(() => new ServerHeader(null, "Goto10").Invoke(httpContextMock.Object));
             httpDictionary.Verify();
-        }        
+        }
+
+        [TestMethod]
+        public void XPoweredByHeaderSet()
+        {
+            httpDictionary.SetupSet(a => a[Constants.XPoweredBy] = "Goto10").Verifiable();
+            AsyncTools.RunSync(() => new XPoweredByHeader(null, "Goto10").Invoke(httpContextMock.Object));
+            httpDictionary.Verify();
+        }
     }
 }
