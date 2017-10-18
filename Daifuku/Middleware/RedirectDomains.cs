@@ -9,7 +9,7 @@ namespace Daifuku.Middleware
     /// <summary>
     /// Enforce domain.
     /// </summary>
-    public class EnforceDomain
+    public class RedirectDomains
     {
         readonly RequestDelegate _next;
         Dictionary<string, string> _domainRedirects;
@@ -19,7 +19,7 @@ namespace Daifuku.Middleware
         /// </summary>
         /// <param name="next">Next.</param>
         /// <param name="domainRedirects">Domain redirects.</param>
-        public EnforceDomain(RequestDelegate next, Dictionary<string, string> domainRedirects)
+        public RedirectDomains(RequestDelegate next, Dictionary<string, string> domainRedirects)
         {
             _domainRedirects = domainRedirects;
             _next = next;
