@@ -63,11 +63,18 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     .WithFrameAncestors(CspConstants.None)
     .WithMediaSource(CspConstants.Schemes.MediaStream)
     .BuildPolicy());
+
+  // set Expect CT
+  app.UseExpectCt(86400, "https://daifu.ku/report");
 ```
 
-### Info
+## External documents
 
 [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) @ MDN web docs moz://a
+
+## Acknowledgement
+
+[HardHat](https://github.com/TerribleDev/HardHat) by [TerribleDev](https://github.com/TerribleDev)
 
 ## License
 

@@ -86,6 +86,9 @@ namespace Daifuku.SampleWeb
               .WithMediaSource(CspConstants.Schemes.MediaStream)
               .BuildPolicy());
 
+            // set Expect CT
+            app.UseExpectCt(86400, "https://daifu.ku/report");
+
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

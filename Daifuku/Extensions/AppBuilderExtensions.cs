@@ -102,6 +102,14 @@ namespace Daifuku.Extensions
             return app.UseMiddleware<Middleware.ContentSecurityPolicy>(policy);
         }
 
+        public static IApplicationBuilder UseExpectCt(this IApplicationBuilder app, ulong maxAge, string reportUri, bool enforce = false)
+        {
+            if (app == null)
+                throw new ArgumentNullException(nameof(app));
+
+            return app.UseMiddleware<ExpectCt>(maxAge, reportUri, enforce);
+        }
+
         public static IApplicationBuilder UseDaifuku(this IApplicationBuilder app)
         {
             if (app == null)

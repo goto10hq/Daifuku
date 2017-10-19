@@ -8,9 +8,14 @@ namespace Daifuku
     static class Constants
     {
         /// <summary>
-        /// Content secutiry police.
+        /// Content security policy.
         /// </summary>
         internal const string ContentSecurityPolicy = "Content-Security-Policy";
+
+        /// <summary>
+        /// Ecpect CT.
+        /// </summary>
+        internal const string ExpectCt = "Expect-CT";
 
         /// <summary>
         /// The server header.
