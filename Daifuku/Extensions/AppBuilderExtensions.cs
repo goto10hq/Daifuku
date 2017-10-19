@@ -51,7 +51,7 @@ namespace Daifuku.Extensions
             if (app == null)
                 throw new ArgumentNullException(nameof(app));
 
-            return app.UseMiddleware<ReferrerPolicy>(policy);
+            return app.UseMiddleware<Middleware.ReferrerPolicy>(policy);
         }
 
         public static IApplicationBuilder UsePoweredBy(this IApplicationBuilder app, string header = null)
@@ -67,10 +67,10 @@ namespace Daifuku.Extensions
             if (app == null)
                 throw new ArgumentNullException(nameof(app));
 
-            return app.UseServerHeader(null)
-                .UseNoMimeSniff()
-                .UseReferrerPolicy(ReferrerPolicy.NoReferrer)
-                .UsePoweredBy(null);
+            return app.UseMiddleware<ServerHeader>()
+                .UseMiddleware<NoSniff>()
+                .UseMiddleware<Middleware.ReferrerPolicy>(ReferrerPolicy.NoReferrer)
+                .UseMiddleware<XPoweredBy>();
         }
     }
 }

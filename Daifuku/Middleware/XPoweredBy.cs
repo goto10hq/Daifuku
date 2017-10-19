@@ -16,9 +16,9 @@ namespace Daifuku.Middleware
 
         public async Task Invoke(HttpContext context)
         {
-            if (string.IsNullOrWhiteSpace(_header))
-                context.Response.Headers.Remove(Constants.XPoweredBy);
-            else
+            context.Response.Headers.Remove(Constants.XPoweredBy);
+
+            if (!string.IsNullOrWhiteSpace(_header))
                 context.Response.Headers[Constants.XPoweredBy] = _header;
 
             if (_next != null)
