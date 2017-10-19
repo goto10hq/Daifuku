@@ -57,6 +57,9 @@ namespace Daifuku.SampleWeb
             // set XSS protection
             app.UseXssProtection(XssProtection.EnabledWithBlock);
 
+            // set custom header
+            app.UseCustomHeader("X-Overlord", "Daifuku");
+
             // or just forget all settings and use default pipeline :)
             //app.UseDaifuku();
 

@@ -86,6 +86,14 @@ namespace Daifuku.Extensions
             return app.UseMiddleware<Hsts>(maxAge, includeSubDomains, preload);
         }
 
+        public static IApplicationBuilder UseCustomHeader(this IApplicationBuilder app, string header, string value)
+        {
+            if (app == null)
+                throw new ArgumentNullException(nameof(app));
+
+            return app.UseMiddleware<CustomHeader>(header, value);
+        }
+
         public static IApplicationBuilder UseDaifuku(this IApplicationBuilder app)
         {
             if (app == null)
