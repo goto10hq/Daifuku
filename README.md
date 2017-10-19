@@ -68,6 +68,25 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   app.UseExpectCt(86400, "https://daifu.ku/report");
 ```
 
+## IIS
+
+As long as IIS injects some headers you can clean up headers configuring your ``web.config``
+
+```xml
+<configuration>
+  <system.webServer>
+    <httpProtocol>
+      <customHeaders>
+        <clear />
+      </customHeaders>
+      <redirectHeaders>
+        <clear />
+      </redirectHeaders>
+    </httpProtocol>
+  </system.webServer>
+</configuration>
+```
+
 ## External documents
 
 [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) @ MDN web docs moz://a
