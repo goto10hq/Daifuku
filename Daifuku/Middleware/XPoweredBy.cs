@@ -16,7 +16,10 @@ namespace Daifuku.Middleware
 
         public async Task Invoke(HttpContext context)
         {
-            context.Response.Headers[Constants.XPoweredBy] = _header ?? string.Empty;
+            context.Response.Headers.Remove(Constants.XPoweredBy);
+
+            if (!string.IsNullOrWhiteSpace(_header))
+                context.Response.Headers[Constants.XPoweredBy] = _header;
 
             if (_next != null)
                 await _next(context);

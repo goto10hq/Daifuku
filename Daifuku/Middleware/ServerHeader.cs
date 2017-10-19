@@ -29,7 +29,10 @@ namespace Daifuku.Middleware
         /// <param name="context">Context.</param>
         public async Task Invoke(HttpContext context)
         {
-            context.Response.Headers[Constants.ServerHeader] = _header ?? string.Empty;
+            context.Response.Headers.Remove(Constants.ServerHeader);
+
+            if (!string.IsNullOrWhiteSpace(_header))
+                context.Response.Headers[Constants.ServerHeader] = _header;
 
             if (_next != null)
                 await _next(context);
