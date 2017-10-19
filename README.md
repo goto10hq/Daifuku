@@ -30,6 +30,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   // set Frame guard
   app.UseFrameGuard(new FrameGuardOptions(FrameGuard.SameOrigin));
 
+  // set XSS protection
+  app.UseXssProtection(XssProtection.EnabledWithBlock);
+
   // or just forget all settings and use default pipeline :)
   //app.UseDaifuku();
 
@@ -39,7 +42,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
       { "daifu.ku", "www.daifu.ku" },
       { "test.azurewebsites.net", "www.daifu.ku" },
   });
-}
 ```
 
 ### Info
