@@ -32,7 +32,7 @@ namespace Daifuku.Middleware
             if (string.IsNullOrWhiteSpace(_header))
                 context.Response.Headers.Remove(Constants.ServerHeader);
             else
-                context.Response.Headers[Constants.ServerHeader] = _header;
+                context.Response.Headers[Constants.ServerHeader] = _header ?? string.Empty;
 
             if (_next != null)
                 await _next(context);

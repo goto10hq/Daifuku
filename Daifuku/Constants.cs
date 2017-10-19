@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Extensions.Primitives;
 
 namespace Daifuku
 {
@@ -29,6 +28,11 @@ namespace Daifuku
         internal const string XContentTypeOptions = "X-Content-Type-Options";
 
         /// <summary>
+        /// X frame options.
+        /// </summary>
+        internal const string FrameGuardHeader = "X-Frame-Options";
+
+        /// <summary>
         /// X content type options value for no sniff.
         /// </summary>
         internal const string NoSniff = "nosniff";
@@ -46,6 +50,16 @@ namespace Daifuku
             { Daifuku.ReferrerPolicy.OriginWhenCrossOrigin, "origin-when-cross-origin" },
             { Daifuku.ReferrerPolicy.StrictOriginWhenCrossOrigin, "strict-origin-when-cross-origin" },
             { Daifuku.ReferrerPolicy.UnsafeUrl, "unsafe-url" }
+        };
+
+        /// <summary>
+        /// Frame guards.
+        /// </summary>
+        internal static Dictionary<FrameGuard, string> FrameGuards = new Dictionary<FrameGuard, string>
+        {
+            { FrameGuard.Deny, "DENY" },
+            { FrameGuard.SameOrigin, "SAMEORIGIN" },
+            { FrameGuard.AllowFrom, "ALLOW-FROM" }
         };
     }
 }

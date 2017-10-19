@@ -62,12 +62,21 @@ namespace Daifuku.Extensions
             return app.UseMiddleware<XPoweredBy>(header);
         }
 
+        public static IApplicationBuilder UseFrameGuard(this IApplicationBuilder app, FrameGuardOptions options)
+        {
+            if (app == null)
+                throw new ArgumentNullException(nameof(app));
+
+            return app.UseMiddleware<FrameGuard>(options);
+        }
+
         public static IApplicationBuilder UseDaifuku(this IApplicationBuilder app)
         {
             if (app == null)
                 throw new ArgumentNullException(nameof(app));
 
             return app.UseMiddleware<ServerHeader>()
+                .UseMiddleware<FrameGuard>(new FrameGuardOptions(FrameGuard.SameOrigin))
                 .UseMiddleware<NoSniff>()
                 .UseMiddleware<Middleware.ReferrerPolicy>(ReferrerPolicy.NoReferrer)
                 .UseMiddleware<XPoweredBy>();
