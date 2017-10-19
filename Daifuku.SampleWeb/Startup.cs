@@ -32,13 +32,39 @@ namespace Daifuku.SampleWeb
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
-                app.UseDaifuku();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseDaifuku();
             }
+
+            // set Server
+            app.UseServerHeader("Daifuku server");
+
+            // set No Mime Sniff
+            app.UseNoMimeSniff();
+
+            // set Referrer policy
+            app.UseReferrerPolicy(ReferrerPolicy.NoReferrer);
+
+            // set Powered by
+            app.UsePoweredBy("Daifuku!");
+
+            // set Frame guard
+            app.UseFrameGuard(new FrameGuardOptions(FrameGuard.SameOrigin));
+
+            // set XSS protection
+            app.UseXssProtection(XssProtection.EnabledWithBlock);
+
+            // or just forget all settings and use default pipeline :)
+            //app.UseDaifuku();
+
+            // configure domain redirects
+            app.RedirectDomains(new Dictionary<string, string>
+            {
+                { "daifu.ku", "www.daifu.ku" },
+                { "test.azurewebsites.net", "www.daifu.ku" },
+            });
 
             app.UseStaticFiles();
 

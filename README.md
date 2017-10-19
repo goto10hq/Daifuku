@@ -15,31 +15,36 @@
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
-  // set Server (HTTP hader)
+  // set Server
   app.UseServerHeader("Daifuku server");
-  // or just remove it completely
-  app.UseServerHeader();
-  
+
   // set No Mime Sniff
   app.UseNoMimeSniff();
-  
+
   // set Referrer policy
   app.UseReferrerPolicy(ReferrerPolicy.NoReferrer);
 
-  // set powered by
+  // set Powered by
   app.UsePoweredBy("Daifuku!");
 
+  // set Frame guard
+  app.UseFrameGuard(new FrameGuardOptions(FrameGuard.SameOrigin));
+
   // or just forget all settings and use default pipeline :)
-  app.UseDaifuku();
+  //app.UseDaifuku();
 
   // configure domain redirects
-  app.RedirectDomains(new System.Collections.Generic.Dictionary<string, string>
+  app.RedirectDomains(new Dictionary<string, string>
   {
       { "daifu.ku", "www.daifu.ku" },
       { "test.azurewebsites.net", "www.daifu.ku" },
-  });  
+  });
 }
 ```
+
+### Info
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
 
 ## License
 

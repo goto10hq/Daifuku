@@ -38,6 +38,11 @@ namespace Daifuku
         internal const string NoSniff = "nosniff";
 
         /// <summary>
+        /// XSS protection.
+        /// </summary>
+        internal const string XssProtection = "X-XSS-Protection";
+
+        /// <summary>
         /// Referrers.
         /// </summary>
         internal static Dictionary<ReferrerPolicy, string> Referrers = new Dictionary<ReferrerPolicy, string>
@@ -60,6 +65,16 @@ namespace Daifuku
             { FrameGuard.Deny, "DENY" },
             { FrameGuard.SameOrigin, "SAMEORIGIN" },
             { FrameGuard.AllowFrom, "ALLOW-FROM" }
+        };
+
+        /// <summary>
+        /// XSS protections.
+        /// </summary>
+        internal static Dictionary<XssProtection, string> XssProtections = new Dictionary<XssProtection, string>
+        {
+            { Daifuku.XssProtection.Disabled, "0" },
+            { Daifuku.XssProtection.Enabled, "1" },
+            { Daifuku.XssProtection.EnabledWithBlock, "1; mode=block" }
         };
     }
 }

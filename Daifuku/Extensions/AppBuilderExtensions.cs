@@ -70,6 +70,14 @@ namespace Daifuku.Extensions
             return app.UseMiddleware<FrameGuard>(options);
         }
 
+        public static IApplicationBuilder UseXssProtection(this IApplicationBuilder app, XssProtection protection)
+        {
+            if (app == null)
+                throw new ArgumentNullException(nameof(app));
+
+            return app.UseMiddleware<XssProtection>(protection);
+        }
+
         public static IApplicationBuilder UseDaifuku(this IApplicationBuilder app)
         {
             if (app == null)
@@ -77,6 +85,7 @@ namespace Daifuku.Extensions
 
             return app.UseMiddleware<ServerHeader>()
                 .UseMiddleware<FrameGuard>(new FrameGuardOptions(FrameGuard.SameOrigin))
+                .UseMiddleware<XssProtection>(XssProtection.EnabledWithBlock)
                 .UseMiddleware<NoSniff>()
                 .UseMiddleware<Middleware.ReferrerPolicy>(ReferrerPolicy.NoReferrer)
                 .UseMiddleware<XPoweredBy>();
