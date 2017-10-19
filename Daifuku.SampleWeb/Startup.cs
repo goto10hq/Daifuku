@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Daifuku.Extensions;
 using Microsoft.AspNetCore.Rewrite;
+using Daifuku.Builders;
 
 namespace Daifuku.SampleWeb
 {
@@ -40,7 +38,10 @@ namespace Daifuku.SampleWeb
             }
 
             // set Server
-            app.UseServerHeader("Daifuku server");
+            app.UseServerHeader();
+
+            // set Powered by
+            app.UsePoweredBy();
 
             // set No Mime Sniff
             app.UseNoMimeSniff();
@@ -48,20 +49,17 @@ namespace Daifuku.SampleWeb
             // set Referrer policy
             app.UseReferrerPolicy(ReferrerPolicy.NoReferrer);
 
-            // set Powered by
-            app.UsePoweredBy("Daifuku!");
-
             // set Frame guard
             app.UseFrameGuard(new FrameGuardOptions(FrameGuard.SameOrigin));
 
             // set XSS protection
             app.UseXssProtection(XssProtection.EnabledWithBlock);
 
-            // set custom header
-            app.UseCustomHeader("X-Overlord", "Daifuku");
-
             // or just forget all settings and use default pipeline :)
-            //app.UseDaifuku();
+            // app.UseDaifuku();
+
+            // pipeline stuff below is not set in UseDaifuku
+            // ---------------------------------------------
 
             // do we use HTTPS?
             var options = new RewriteOptions().AddRedirectToHttpsPermanent();
@@ -74,6 +72,19 @@ namespace Daifuku.SampleWeb
                 { "daifu.ku", "www.daifu.ku" },
                 { "test.azurewebsites.net", "www.daifu.ku" },
             });
+
+            // set custom header
+            app.UseCustomHeader("X-Overlord", "Daifuku");
+
+            // set content security policy
+            app.UseContentSecurityPolicy(
+              new ContentSecurityPolicyBuilder()
+              .WithDefaultSource(CspConstants.Self)
+              .WithImageSource("http://blobs.daifu.ku")
+              .WithFontSource(CspConstants.Self)
+              .WithFrameAncestors(CspConstants.None)
+              .WithMediaSource(CspConstants.Schemes.MediaStream)
+              .BuildPolicy());
 
             app.UseStaticFiles();
 

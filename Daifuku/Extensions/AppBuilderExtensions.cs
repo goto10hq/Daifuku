@@ -94,6 +94,14 @@ namespace Daifuku.Extensions
             return app.UseMiddleware<CustomHeader>(header, value);
         }
 
+        public static IApplicationBuilder UseContentSecurityPolicy(this IApplicationBuilder app, ContentSecurityPolicy policy)
+        {
+            if (app == null)
+                throw new ArgumentNullException(nameof(app));
+
+            return app.UseMiddleware<Middleware.ContentSecurityPolicy>(policy);
+        }
+
         public static IApplicationBuilder UseDaifuku(this IApplicationBuilder app)
         {
             if (app == null)

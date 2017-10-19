@@ -8,6 +8,11 @@ namespace Daifuku
     static class Constants
     {
         /// <summary>
+        /// Content secutiry police.
+        /// </summary>
+        internal const string ContentSecurityPolicy = "Content-Security-Policy";
+
+        /// <summary>
         /// The server header.
         /// </summary>
         internal const string ServerHeader = "Server";
@@ -81,5 +86,25 @@ namespace Daifuku
             { Daifuku.XssProtection.Enabled, "1" },
             { Daifuku.XssProtection.EnabledWithBlock, "1; mode=block" }
         };
+
+        /// <summary>
+        /// CSP directives.
+        /// </summary>
+        internal static class CspDirectives
+        {
+            internal const string DefaultSrc = "default-src";
+            internal const string ScriptSrc = "script-src";
+            internal const string StyleSrc = "style-src";
+            internal const string ImgSrc = "img-src";
+            internal const string ConnectSrc = "connect-src";
+            internal const string FontSrc = "font-src";
+            internal const string ObjectSrc = "object-src";
+            internal const string MediaSrc = "media-src";
+            internal const string Sandbox = "sandbox";
+            internal const string ChildSrc = "child-src";
+            internal const string FormAction = "form-action";
+            internal const string FrameAncestors = "frame-ancestors";
+            internal const string PluginTypes = "plugin-types";
+        }
     }
 }
