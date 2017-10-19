@@ -23,7 +23,7 @@ namespace Daifuku
         internal const string ReferrerPolicy = "Referrer-Policy";
 
         /// <summary>
-        /// X content type options
+        /// X content type options.
         /// </summary>
         internal const string XContentTypeOptions = "X-Content-Type-Options";
 
@@ -41,6 +41,11 @@ namespace Daifuku
         /// XSS protection.
         /// </summary>
         internal const string XssProtection = "X-XSS-Protection";
+
+        /// <summary>
+        /// Strict transport secutiry.
+        /// </summary>
+        internal const string StrictTransportSecurity = "Strict-Transport-Security";
 
         /// <summary>
         /// Referrers.

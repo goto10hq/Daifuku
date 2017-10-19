@@ -36,6 +36,11 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   // or just forget all settings and use default pipeline :)
   //app.UseDaifuku();
 
+  // do we use HTTPS?
+  var options = new RewriteOptions().AddRedirectToHttpsPermanent();
+  app.UseRewriter(options);
+  app.UseHsts();
+
   // configure domain redirects
   app.RedirectDomains(new Dictionary<string, string>
   {
@@ -46,7 +51,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ### Info
 
-https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+[HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) @ MDN web docs moz://a
 
 ## License
 

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Daifuku.Extensions;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace Daifuku.SampleWeb
 {
@@ -58,6 +59,11 @@ namespace Daifuku.SampleWeb
 
             // or just forget all settings and use default pipeline :)
             //app.UseDaifuku();
+
+            // do we use HTTPS?
+            var options = new RewriteOptions().AddRedirectToHttpsPermanent();
+            app.UseRewriter(options);
+            app.UseHsts();
 
             // configure domain redirects
             app.RedirectDomains(new Dictionary<string, string>

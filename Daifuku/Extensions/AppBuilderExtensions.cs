@@ -78,6 +78,14 @@ namespace Daifuku.Extensions
             return app.UseMiddleware<XssProtection>(protection);
         }
 
+        public static IApplicationBuilder UseHsts(this IApplicationBuilder app, ulong maxAge = 31536000, bool includeSubDomains = false, bool preload = false)
+        {
+            if (app == null)
+                throw new ArgumentNullException(nameof(app));
+
+            return app.UseMiddleware<Hsts>(maxAge, includeSubDomains, preload);
+        }
+
         public static IApplicationBuilder UseDaifuku(this IApplicationBuilder app)
         {
             if (app == null)
