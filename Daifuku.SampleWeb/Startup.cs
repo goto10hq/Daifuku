@@ -56,14 +56,14 @@ namespace Daifuku.SampleWeb
             app.UseXssProtection(XssProtection.EnabledWithBlock);
 
             // or just forget all settings and use default pipeline :)
-            // app.UseDaifuku();
+            app.UseDaifuku();
 
             // pipeline stuff below is not set in UseDaifuku
             // ---------------------------------------------
 
             // do we use HTTPS?
-            var options = new RewriteOptions().AddRedirectToHttpsPermanent();
-            app.UseRewriter(options);
+            //var options = new RewriteOptions().AddRedirectToHttpsPermanent();
+            //app.UseRewriter(options);
             app.UseHsts();
 
             // configure domain redirects

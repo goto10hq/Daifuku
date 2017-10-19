@@ -16,7 +16,7 @@ namespace Daifuku.Middleware
         /// </summary>
         /// <param name="next">Next.</param>
         /// <param name="header">Server header.</param>
-        public ServerHeader(RequestDelegate next, string header = null)
+        public ServerHeader(RequestDelegate next, string header)
         {
             _next = next;
             _header = header;
@@ -29,10 +29,7 @@ namespace Daifuku.Middleware
         /// <param name="context">Context.</param>
         public async Task Invoke(HttpContext context)
         {
-            if (string.IsNullOrWhiteSpace(_header))
-                context.Response.Headers.Remove(Constants.ServerHeader);
-            else
-                context.Response.Headers[Constants.ServerHeader] = _header ?? string.Empty;
+            context.Response.Headers[Constants.ServerHeader] = _header ?? string.Empty;
 
             if (_next != null)
                 await _next(context);

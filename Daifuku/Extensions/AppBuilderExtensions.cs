@@ -30,7 +30,7 @@ namespace Daifuku.Extensions
         /// <returns>Pipeline.</returns>
         /// <param name="app">App.</param>
         /// <param name="header">Server header. If set to <c>null</c> just remove server header completely.</param>
-        public static IApplicationBuilder UseServerHeader(this IApplicationBuilder app, string header = null)
+        public static IApplicationBuilder UseServerHeader(this IApplicationBuilder app, string header = "")
         {
             if (app == null)
                 throw new ArgumentNullException(nameof(app));
@@ -54,7 +54,7 @@ namespace Daifuku.Extensions
             return app.UseMiddleware<Middleware.ReferrerPolicy>(policy);
         }
 
-        public static IApplicationBuilder UsePoweredBy(this IApplicationBuilder app, string header = null)
+        public static IApplicationBuilder UsePoweredBy(this IApplicationBuilder app, string header = "")
         {
             if (app == null)
                 throw new ArgumentNullException(nameof(app));
@@ -67,7 +67,7 @@ namespace Daifuku.Extensions
             if (app == null)
                 throw new ArgumentNullException(nameof(app));
 
-            return app.UseMiddleware<FrameGuard>(options);
+            return app.UseMiddleware<Middleware.FrameGuard>(options);
         }
 
         public static IApplicationBuilder UseXssProtection(this IApplicationBuilder app, XssProtection protection)
@@ -75,7 +75,7 @@ namespace Daifuku.Extensions
             if (app == null)
                 throw new ArgumentNullException(nameof(app));
 
-            return app.UseMiddleware<XssProtection>(protection);
+            return app.UseMiddleware<Middleware.XssProtection>(protection);
         }
 
         public static IApplicationBuilder UseHsts(this IApplicationBuilder app, ulong maxAge = 31536000, bool includeSubDomains = false, bool preload = false)
@@ -115,12 +115,12 @@ namespace Daifuku.Extensions
             if (app == null)
                 throw new ArgumentNullException(nameof(app));
 
-            return app.UseMiddleware<ServerHeader>()
-                .UseMiddleware<FrameGuard>(new FrameGuardOptions(FrameGuard.SameOrigin))
-                .UseMiddleware<XssProtection>(XssProtection.EnabledWithBlock)
-                .UseMiddleware<NoSniff>()
+            return app.UseMiddleware<ServerHeader>("")
+                .UseMiddleware<Middleware.FrameGuard>(new FrameGuardOptions(FrameGuard.SameOrigin))
+                .UseMiddleware<Middleware.XssProtection>(XssProtection.EnabledWithBlock)
+                .UseMiddleware<NoSniff>(true)
                 .UseMiddleware<Middleware.ReferrerPolicy>(ReferrerPolicy.NoReferrer)
-                .UseMiddleware<XPoweredBy>();
+                .UseMiddleware<XPoweredBy>("");
         }
     }
 }

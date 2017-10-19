@@ -8,7 +8,7 @@ namespace Daifuku.Middleware
         readonly string _header;
         readonly RequestDelegate _next;
 
-        public XPoweredBy(RequestDelegate next, string header = null)
+        public XPoweredBy(RequestDelegate next, string header)
         {
             _next = next;
             _header = header;
@@ -16,8 +16,6 @@ namespace Daifuku.Middleware
 
         public async Task Invoke(HttpContext context)
         {
-            //context.Response.Headers.Remove(Constants.XPoweredBy);
-            //if (!string.IsNullOrWhiteSpace(_header))
             context.Response.Headers[Constants.XPoweredBy] = _header ?? string.Empty;
 
             if (_next != null)
