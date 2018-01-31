@@ -1,4 +1,5 @@
-﻿using Daifuku.Validations;
+﻿using Daifuku.Extensions;
+using Daifuku.Validations;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Linq;
 
@@ -35,7 +36,8 @@ namespace Daifuku.Exceptions
                     validateModelFilter is ValidateModelAttribute vma)
                     title = vma.Message;
 
-                context.Result = new ValidationFailedResult(title, context.ModelState);
+                if (context.HttpContext.Request.IsAjaxRequest())
+                    context.Result = new ValidationFailedResult(title, context.ModelState);
             }
         }
     }
