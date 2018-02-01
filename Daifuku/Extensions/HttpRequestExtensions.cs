@@ -5,7 +5,7 @@ namespace Daifuku.Extensions
 {
     public static class HttpRequestExtensions
     {
-        public static bool IsAjaxRequest(this HttpRequest request, bool fuzzy = true)
+        public static bool IsAjaxRequest(this HttpRequest request, bool extendedCheck = true)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -16,11 +16,10 @@ namespace Daifuku.Extensions
                 return true;
             }
 
-            if (!fuzzy)
+            if (!extendedCheck)
                 return false;
 
-            if (request.ContentType.IndexOf("application/json", StringComparison.OrdinalIgnoreCase) >= 0 &&
-                request.Headers != null &&
+            if (request.Headers != null &&
                 request.Headers["Accept"].ToString().IndexOf("application/json", StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 return true;

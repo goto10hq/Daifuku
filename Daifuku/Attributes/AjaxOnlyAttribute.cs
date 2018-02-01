@@ -7,20 +7,20 @@ namespace Daifuku.Attributes
 {
     public class AjaxOnlyAttribute : ActionMethodSelectorAttribute
     {
-        readonly bool _fuzzy = true;
+        readonly bool _extendedCheck = true;
 
         public AjaxOnlyAttribute()
         {
         }
 
-        public AjaxOnlyAttribute(bool fuzzy)
+        public AjaxOnlyAttribute(bool extendedCheck)
         {
-            _fuzzy = fuzzy;
+            _extendedCheck = extendedCheck;
         }
 
         public override bool IsValidForRequest(RouteContext routeContext, ActionDescriptor action)
         {
-            return routeContext.HttpContext.Request.IsAjaxRequest(_fuzzy);
+            return routeContext.HttpContext.Request.IsAjaxRequest(_extendedCheck);
         }
     }
 }
