@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Daifuku.Extensions;
 using Microsoft.AspNetCore.Rewrite;
 using Daifuku.Builders;
+using Daifuku.Exceptions;
+using Daifuku.SampleWeb.Exceptions;
 
 namespace Daifuku.SampleWeb
 {
@@ -21,7 +23,10 @@ namespace Daifuku.SampleWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(config =>
+            {
+                config.Filters.Add(typeof(ApplicationExceptionFilter<AppException>));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,7 +85,7 @@ namespace Daifuku.SampleWeb
             app.UseContentSecurityPolicy(
               new ContentSecurityPolicyBuilder()
               .WithDefaultSource(CspConstants.Self)
-              .WithImageSource("http://blobs.daifu.ku")
+              .WithImageSource("*")
               .WithFontSource(CspConstants.Self)
               .WithFrameAncestors(CspConstants.None)
               .WithMediaSource(CspConstants.Schemes.MediaStream)

@@ -38,6 +38,8 @@ namespace Daifuku.Exceptions
 
                 if (context.HttpContext.Request.IsAjaxRequest())
                     context.Result = new ValidationFailedResult(title, context.ModelState);
+                else
+                    context.ExceptionHandled = true;
             }
         }
     }
