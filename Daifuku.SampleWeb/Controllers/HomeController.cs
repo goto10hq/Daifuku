@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Daifuku.SampleWeb.Models;
 using Daifuku.SampleWeb.Exceptions;
@@ -11,11 +8,13 @@ namespace Daifuku.SampleWeb.Controllers
 {
     public class HomeController : Controller
     {
+        [Route("")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Route("about")]
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -23,6 +22,7 @@ namespace Daifuku.SampleWeb.Controllers
             return View();
         }
 
+        [Route("contact")]
         [HttpGet]
         public IActionResult Contact()
         {
@@ -32,7 +32,7 @@ namespace Daifuku.SampleWeb.Controllers
         }
 
         [HttpPost]
-        [Route("send-token")]
+        [Route("contact")]
         public IActionResult SendToken(HomeSendToken m)
         {
             if (ModelState.IsValid)
