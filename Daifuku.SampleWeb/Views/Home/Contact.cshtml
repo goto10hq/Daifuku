@@ -20,3 +20,25 @@
         <button type="submit" class="btn btn-primary">Send a magic token</button>
     </div>
 </form>
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(function () {
+            axios.get('/api/ajax-ok')
+                .then(function (response) {
+                    console.log('ok:success', response);
+                })
+                .catch(function (error) {
+                    console.log('ok:error', error);
+                });
+
+            axios.get('/api/ajax-bad')
+                .then(function (response) {
+                    console.log('bad:success', response);
+                })
+                .catch(function (error) {
+                    console.log('bad:error', error);
+                });
+        });
+    </script>
+}

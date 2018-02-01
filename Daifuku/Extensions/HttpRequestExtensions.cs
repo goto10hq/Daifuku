@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
+using System.Linq;
 
 namespace Daifuku.Extensions
 {
@@ -10,8 +11,10 @@ namespace Daifuku.Extensions
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
+            var r = request.Headers["Accept"].ToString();
+
             if (request.Headers != null &&
-                request.Headers["X-Requested-With"].ToString().Equals("XMLHttpRequest", StringComparison.OrdinalIgnoreCase))
+                request.Headers["X-Requested-With"].Any(h => h.Equals("XMLHttpRequest", StringComparison.OrdinalIgnoreCase)))
             {
                 return true;
             }
@@ -20,7 +23,7 @@ namespace Daifuku.Extensions
                 return false;
 
             if (request.Headers != null &&
-                request.Headers["Accept"].ToString().IndexOf("application/json", StringComparison.OrdinalIgnoreCase) >= 0)
+                request.Headers["Accept"].Any(h => h.IndexOf("application/json", StringComparison.OrdinalIgnoreCase) >= 0))
             {
                 return true;
             }

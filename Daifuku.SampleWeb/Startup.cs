@@ -82,14 +82,14 @@ namespace Daifuku.SampleWeb
             app.UseCustomHeader("X-Overlord", "Daifuku");
 
             // set content security policy
-            app.UseContentSecurityPolicy(
-              new ContentSecurityPolicyBuilder()
-              .WithDefaultSource(CspConstants.Self)
-              .WithImageSource("*")
-              .WithFontSource(CspConstants.Self)
-              .WithFrameAncestors(CspConstants.None)
-              .WithMediaSource(CspConstants.Schemes.MediaStream)
-              .BuildPolicy());
+            //app.UseContentSecurityPolicy(
+            //  new ContentSecurityPolicyBuilder()
+            //  .WithDefaultSource(CspConstants.Self)
+            //  .WithImageSource("*")
+            //  .WithFontSource(CspConstants.Self)
+            //  .WithFrameAncestors(CspConstants.None)
+            //  .WithMediaSource(CspConstants.Schemes.MediaStream)
+            //  .BuildPolicy());
 
             // set Expect CT
             app.UseExpectCt(86400, "https://daifu.ku/report");

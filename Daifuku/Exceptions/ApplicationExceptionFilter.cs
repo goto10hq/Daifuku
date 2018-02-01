@@ -1,5 +1,6 @@
 ﻿using Daifuku.Extensions;
 using Daifuku.Validations;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Linq;
 
@@ -37,9 +38,28 @@ namespace Daifuku.Exceptions
                     title = vma.Message;
 
                 if (context.HttpContext.Request.IsAjaxRequest())
+                {
                     context.Result = new ValidationFailedResult(title, context.ModelState);
+                }
                 else
+                {
+                    context.Exception = null;
                     context.ExceptionHandled = true;
+
+                    var viewName = context.RouteData.Values["action"] as string;
+
+                    if (validateModelFilter != null &&
+                        validateModelFilter is ValidateModelAttribute vma2)
+                    {
+                        if (!string.IsNullOrEmpty(vma2.View))
+                            viewName = vma2.View;
+                    }
+
+                    context.Result = new ViewResult
+                    {
+                        ViewName = viewName
+                    };
+                }
             }
         }
     }
