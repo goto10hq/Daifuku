@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <PackageId>Daifuku</PackageId>
     <Title>Daifuku</Title>
-    <Version>1.6.6</Version>
+    <Version>1.6.7</Version>
     <Authors>frohikey</Authors>
     <PackageLicenseUrl>https://github.com/goto10hq/Daifuku/blob/master/LICENSE</PackageLicenseUrl>
     <Owners>Goto10</Owners>
