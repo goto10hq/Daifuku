@@ -5,6 +5,8 @@ namespace Daifuku.SampleWeb.Models
 {
     public class HomeSendToken
     {
+        public string Yup { get; set; } = "test";
+
         public string Name { get; set; }
 
         [DisplayName("Magic token")]

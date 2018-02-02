@@ -38,7 +38,7 @@ namespace Daifuku.SampleWeb.Controllers
         {
             ViewData["Message"] = "Your contact page.";
 
-            return View();
+            return View(new HomeSendToken());
         }
 
         [HttpPost]
@@ -72,7 +72,7 @@ namespace Daifuku.SampleWeb.Controllers
                 }
             }
 
-            return View("Contact");
+            return View("Contact", m);
         }
 
         [HttpGet]
