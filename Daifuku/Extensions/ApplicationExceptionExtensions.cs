@@ -14,15 +14,29 @@ namespace Daifuku.Extensions
             if (appException == null)
                 throw new ArgumentNullException(nameof(appException));
 
-            if (!string.IsNullOrWhiteSpace(appException.Message))
-                modelState.AddModelError(string.Empty, appException.Message);
+            var messagesUsed = false;
 
             if (appException.Messages != null)
             {
                 foreach (var m in appException.Messages)
                 {
+                    messagesUsed = true;
                     modelState.AddModelError(m.Field ?? string.Empty, m.Message);
                 }
+            }
+
+            var messageUsed = false;
+
+            if (!string.IsNullOrWhiteSpace(appException.Message))
+            {
+                messageUsed = true;
+                modelState.AddModelError(string.Empty, appException.Message);
+            }
+
+            if (!messagesUsed &&
+                !messageUsed)
+            {
+                modelState.AddModelError(string.Empty, "Internal error");
             }
         }
     }
