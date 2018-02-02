@@ -21,7 +21,7 @@ namespace Daifuku.Extensions
             {
                 foreach (var m in appException.Messages)
                 {
-                    modelState.AddModelError(m.Field, m.Message);
+                    modelState.AddModelError(m.Field ?? string.Empty, m.Message);
                 }
             }
         }
