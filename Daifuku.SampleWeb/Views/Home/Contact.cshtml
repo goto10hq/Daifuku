@@ -4,6 +4,9 @@
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
+<div class="alert" add-css-class-alert-danger="false">
+    Aloha!
+</div>
 <form asp-controller="Home" asp-action="SendToken" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
