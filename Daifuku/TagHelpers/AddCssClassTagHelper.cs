@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Daifuku.TagHelpers
 {
-    [HtmlTargetElement("div", Attributes = ClassPrefix + "*")]
+    [HtmlTargetElement("*", Attributes = ClassPrefix + "*")]
     public class AddCssClassTagHelper : TagHelper
     {
         const string ClassPrefix = "add-css-class-";
