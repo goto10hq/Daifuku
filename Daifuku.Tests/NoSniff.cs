@@ -6,7 +6,7 @@ namespace Daifuku.Tests
 {
     public class NoSniff : IClassFixture<HttpFixture>
     {
-        HttpFixture _http;
+        readonly HttpFixture _http;
 
         public NoSniff(HttpFixture http)
         {
