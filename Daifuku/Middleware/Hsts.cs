@@ -34,7 +34,7 @@ namespace Daifuku.Middleware
                 (_preload ? "; preload" : string.Empty);
 
             if (_next != null)
-                await _next(context);
+                await _next(context).ConfigureAwait(false);
         }
     }
 }

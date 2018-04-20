@@ -19,7 +19,7 @@ namespace Daifuku.Middleware
             context.Response.Headers[Constants.ReferrerPolicy] = Constants.Referrers[_policy];
 
             if (_next != null)
-                await _next(context);
+                await _next(context).ConfigureAwait(false);
         }
     }
 }

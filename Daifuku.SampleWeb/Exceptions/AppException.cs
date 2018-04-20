@@ -21,5 +21,9 @@ namespace Daifuku.SampleWeb.Exceptions
         {
             Messages = messages;
         }
+
+        public AppException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
     }
 }

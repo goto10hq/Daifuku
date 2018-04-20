@@ -29,7 +29,7 @@ namespace Daifuku.Middleware
             context.Response.Headers[_header] = _value;
 
             if (_next != null)
-                await _next(context);
+                await _next(context).ConfigureAwait(false);
         }
     }
 }

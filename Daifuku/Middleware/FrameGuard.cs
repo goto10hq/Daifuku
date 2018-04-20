@@ -29,7 +29,7 @@ namespace Daifuku.Middleware
                 context.Response.Headers[Constants.FrameGuardHeader] = Constants.FrameGuards[_options.Guard] + " " + _options.Domain;
 
             if (_next != null)
-                await _next(context);
+                await _next(context).ConfigureAwait(false);
         }
     }
 }

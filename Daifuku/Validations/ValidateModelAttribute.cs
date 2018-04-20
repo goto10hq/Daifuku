@@ -1,8 +1,10 @@
 ﻿using Daifuku.Extensions;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System;
 
 namespace Daifuku.Validations
 {
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     public class ValidateModelAttribute : ActionFilterAttribute
     {
         public string Message { get; set; }

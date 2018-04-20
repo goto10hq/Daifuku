@@ -19,7 +19,7 @@ namespace Daifuku.Middleware
             context.Response.Headers[Constants.XssProtection] = Constants.XssProtections[_protection];
 
             if (_next != null)
-                await _next(context);
+                await _next(context).ConfigureAwait(false);
         }
     }
 }

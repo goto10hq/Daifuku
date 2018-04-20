@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace Daifuku.Middleware
     public class RedirectDomains
     {
         readonly RequestDelegate _next;
-        Dictionary<string, string> _domainRedirects;
+        readonly Dictionary<string, string> _domainRedirects;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:Daifuku.Middleware.EnforceDomain"/> class.
@@ -31,21 +32,21 @@ namespace Daifuku.Middleware
         /// <returns>The invoke.</returns>
         /// <param name="context">Context.</param>
         public async Task Invoke(HttpContext context)
-        {            
+        {
             HttpRequest req = context.Request;
 
-            var host = req.Host.Host.ToLower();
+            var host = req.Host.Host.ToLower(CultureInfo.InvariantCulture);
             var redirect = _domainRedirects.FirstOrDefault(dr => dr.Key.Equals(host, StringComparison.OrdinalIgnoreCase));
-            
+
             if (redirect.Value != null)
-            {                
+            {
                 var url = req.Scheme + "://" + redirect.Value + req.Path + req.QueryString;
-                context.Response.Redirect(url, true);                
+                context.Response.Redirect(url, true);
             }
-            else            
+            else
             {
                 if (_next != null)
-                    await _next(context);
+                    await _next(context).ConfigureAwait(false);
             }
         }
     }

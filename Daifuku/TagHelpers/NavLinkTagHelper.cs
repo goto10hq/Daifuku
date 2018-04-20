@@ -18,7 +18,7 @@ namespace Daifuku.TagHelpers
         {
             base.Process(context, output);
 
-            var childContent = await output.GetChildContentAsync();
+            var childContent = await output.GetChildContentAsync().ConfigureAwait(false);
             string content = childContent.GetContent();
             output.TagName = "li";
             output.TagMode = TagMode.StartTagAndEndTag;

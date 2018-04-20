@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.AspNetCore.Routing;
+using System;
 
 namespace Daifuku.Attributes
 {
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     public class AjaxOnlyAttribute : ActionMethodSelectorAttribute
     {
         readonly bool _extendedCheck = true;

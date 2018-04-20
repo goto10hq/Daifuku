@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Threading.Tasks;
 
 namespace Daifuku.Middleware
@@ -9,6 +10,14 @@ namespace Daifuku.Middleware
         readonly ulong _maxAge;
         readonly string _reportUri;
         readonly bool _enforce;
+
+        public ExpectCt(RequestDelegate next, ulong maxAge, Uri reportUri, bool enforce = false)
+        {
+            _next = next;
+            _maxAge = maxAge;
+            _reportUri = reportUri.OriginalString;
+            _enforce = enforce;
+        }
 
         public ExpectCt(RequestDelegate next, ulong maxAge, string reportUri, bool enforce = false)
         {
@@ -31,7 +40,7 @@ namespace Daifuku.Middleware
                 (_enforce ? "; enforce" : string.Empty);
 
             if (_next != null)
-                await _next(context);
+                await _next(context).ConfigureAwait(false);
         }
     }
 }
