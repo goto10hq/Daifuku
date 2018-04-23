@@ -6,7 +6,7 @@ namespace Daifuku.Tests
 {
     public class CustomHeader : IClassFixture<HttpFixture>
     {
-        HttpFixture _http;
+        readonly HttpFixture _http;
 
         public CustomHeader(HttpFixture http)
         {

@@ -6,7 +6,7 @@ namespace Daifuku.Tests
 {
     public class HstsHeader : IClassFixture<HttpFixture>
     {
-        HttpFixture _http;
+        readonly HttpFixture _http;
 
         public HstsHeader(HttpFixture http)
         {

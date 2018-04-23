@@ -6,7 +6,7 @@ namespace Daifuku.Tests
 {
     public class FrameGuard : IClassFixture<HttpFixture>
     {
-        HttpFixture _http;
+        readonly HttpFixture _http;
 
         public FrameGuard(HttpFixture http)
         {

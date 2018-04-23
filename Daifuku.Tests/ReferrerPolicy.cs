@@ -6,7 +6,7 @@ namespace Daifuku.Tests
 {
     public class ReferrerPolicyHeader : IClassFixture<HttpFixture>
     {
-        HttpFixture _http;
+        readonly HttpFixture _http;
 
         public ReferrerPolicyHeader(HttpFixture http)
         {

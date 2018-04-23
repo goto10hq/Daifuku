@@ -6,7 +6,7 @@ namespace Daifuku.Tests
 {
     public class ExpectCt : IClassFixture<HttpFixture>
     {
-        HttpFixture _http;
+        readonly HttpFixture _http;
 
         public ExpectCt(HttpFixture http)
         {
