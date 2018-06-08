@@ -1,6 +1,6 @@
-﻿using Daifuku.TagHelpers;
+﻿using Daifuku.Extensions;
+using Daifuku.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Moq;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,34 +10,98 @@ namespace Daifuku.Tests
 {
     public class TagHelpers
     {
-        //[Fact]
-        //public void AddCssClassTag()
-        //{
-        //    var accth = new AddCssClassTagHelper();
+        [Fact]
+        public void AddCssClassTag()
+        {
+            var accth = new AddCssClassTagHelper
+            {
+                CssClass = "sakura-nene",
+                ClassValues = new Dictionary<string, bool>
+                {
+                    { "foo", true },
+                    { "bar", false }
+                }
+            };
 
-        //    var attributes = new TagHelperAttributeList
-        //    {
-        //        new TagHelperAttribute("add-css-class-foo", true),
-        //        new TagHelperAttribute("add-css-class-bar", false)
-        //    };
+            var tagHelperContext = new TagHelperContext(
+                            new TagHelperAttributeList(),
+                            new Dictionary<object, object>(),
+                            Guid.NewGuid().ToString("N"));
 
-        //    var tagHelperContext = new TagHelperContext(
-        //                    attributes,
-        //                    //new TagHelperAttributeList(),
-        //                    new Dictionary<object, object>(),
-        //                    Guid.NewGuid().ToString("N"));
+            var tagHelperOutput = new TagHelperOutput("div",
+                new TagHelperAttributeList(),
+            (result, encoder) =>
+            {
+                var tagHelperContent = new DefaultTagHelperContent();
+                tagHelperContent.SetHtmlContent("");
+                return Task.FromResult<TagHelperContent>(tagHelperContent);
+            });
+            accth.Process(tagHelperContext, tagHelperOutput);
 
-        //    var tagHelperOutput = new TagHelperOutput("div",
-        //        new TagHelperAttributeList(),
-        //    (result, encoder) =>
-        //    {
-        //        var tagHelperContent = new DefaultTagHelperContent();
-        //        tagHelperContent.SetHtmlContent(string.Empty);
-        //        return Task.FromResult<TagHelperContent>(tagHelperContent);
-        //    });
-        //    accth.Process(tagHelperContext, tagHelperOutput);
+            var html = tagHelperOutput.ToHtml();
+            Assert.Equal("<div class=\"sakura-nene foo\"></div>", html);
+        }
 
-        //    Assert.Equal("<p><em>Italic</em>, <strong>bold</strong>, and <code>monospace</code>.</p>", tagHelperOutput.Content.GetContent());
-        //}
+        [Fact]
+        public void AddCssClassTag2()
+        {
+            var accth = new AddCssClassTagHelper
+            {
+                ClassValues = new Dictionary<string, bool>
+                {
+                    { "foo", true },
+                    { "bar", true }
+                }
+            };
+
+            var tagHelperContext = new TagHelperContext(
+                            new TagHelperAttributeList(),
+                            new Dictionary<object, object>(),
+                            Guid.NewGuid().ToString("N"));
+
+            var tagHelperOutput = new TagHelperOutput("div",
+                new TagHelperAttributeList(),
+            (result, encoder) =>
+            {
+                var tagHelperContent = new DefaultTagHelperContent();
+                tagHelperContent.SetHtmlContent("");
+                return Task.FromResult<TagHelperContent>(tagHelperContent);
+            });
+            accth.Process(tagHelperContext, tagHelperOutput);
+
+            var html = tagHelperOutput.ToHtml();
+            Assert.Equal("<div class=\"foo bar\"></div>", html);
+        }
+
+        [Fact]
+        public void AddCssClassTag3()
+        {
+            var accth = new AddCssClassTagHelper
+            {
+                CssClass = "none",
+                ClassValues = new Dictionary<string, bool>
+                {
+                    { "bar", false }
+                }
+            };
+
+            var tagHelperContext = new TagHelperContext(
+                            new TagHelperAttributeList(),
+                            new Dictionary<object, object>(),
+                            Guid.NewGuid().ToString("N"));
+
+            var tagHelperOutput = new TagHelperOutput("div",
+                new TagHelperAttributeList(),
+            (result, encoder) =>
+            {
+                var tagHelperContent = new DefaultTagHelperContent();
+                tagHelperContent.SetHtmlContent("");
+                return Task.FromResult<TagHelperContent>(tagHelperContent);
+            });
+            accth.Process(tagHelperContext, tagHelperOutput);
+
+            var html = tagHelperOutput.ToHtml();
+            Assert.Equal("<div class=\"none\"></div>", html);
+        }
     }
 }
