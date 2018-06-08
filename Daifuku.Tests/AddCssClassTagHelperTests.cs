@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Daifuku.Tests
 {
-    public class TagHelpers
+    public class AddCssClassTagHelperTests
     {
         [Fact]
         public void AddCssClassTag()
