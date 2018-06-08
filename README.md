@@ -68,7 +68,23 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   app.UseExpectCt(86400, "https://daifu.ku/report");
 ```
 
-## IIS
+### Tag helpers
+
+#### AddCssClassTagHelper
+
+Adds CSS classes in HTML element.
+
+```html
+<!-- razor -->
+<div class="foundation" add-css-class-foo="42 % 2 == 0" add-css-class-bar="42 % 2 != 0">content</div>
+```
+
+```html
+<!-- html -->
+<div class="foundation foo">content</div>
+```
+
+### IIS
 
 As long as IIS injects some headers you can clean up headers configuring your ``web.config``
 
