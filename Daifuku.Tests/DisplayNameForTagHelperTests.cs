@@ -3,9 +3,11 @@ using Daifuku.TagHelpers;
 using Daifuku.Tests.Helpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using Sushi2;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -17,33 +19,43 @@ namespace Daifuku.Tests
         {
             var modelMetadataProvider = new EmptyModelMetadataProvider();
 
-            return new ModelExpression(name, modelMetadataProvider.GetModelExplorerForType(typeof(Model), new Model()).GetExplorerForProperty(name));
-            //return new ModelExpression(name, modelMetadataProvider.GetModelExplorerForType(typeof(Model), new Model()));
+            var me = new ModelExpression(name, modelMetadataProvider
+                .GetModelExplorerForType(typeof(Model), null)
+                .GetExplorerForProperty(name)
+                );
+
+            var dn = me.ModelExplorer.Metadata.GetDisplayName();
+
+            return me;
         }
 
-        public class Model
+        class Model
         {
             [DisplayName("Kaos")]
             public string Moeta { get; set; }
 
+            [Display(Name = "Abababa")]
+            public string Moeta2 { get; set; }
+
             public int Something { get; set; }
         }
 
-        //[Fact]
-        // TODO: fix
-        public void DisplayNameForSet()
+        [Theory]
+        [InlineData("Moeta", "Kaos")]
+        [InlineData("Moeta2", "Abababa")]
+        public void DisplayNameForSet(string property, string output)
         {
             var m = new Model();
 
             var th = new DisplayNameForTagHelper
             {
-                DisplayNameFor = CreateModelExpression("Moeta")
+                DisplayNameFor = CreateModelExpression(property)
             };
 
             var tagHelperContext = new TagHelperContext(
                             new TagHelperAttributeList(),
                             new Dictionary<object, object>(),
-                            Guid.NewGuid().ToString("N"));
+                            Guid.NewGuid().ToString("N", Cultures.Invariant));
 
             var tagHelperOutput = new TagHelperOutput("div",
                 new TagHelperAttributeList(),
@@ -56,7 +68,7 @@ namespace Daifuku.Tests
             th.Process(tagHelperContext, tagHelperOutput);
 
             var html = tagHelperOutput.ToHtml();
-            Assert.Equal("<div>Kaos</div>", html);
+            Assert.Equal($"<div>{output}</div>", html);
         }
 
         [Fact]
@@ -72,7 +84,7 @@ namespace Daifuku.Tests
             var tagHelperContext = new TagHelperContext(
                             new TagHelperAttributeList(),
                             new Dictionary<object, object>(),
-                            Guid.NewGuid().ToString("N"));
+                            Guid.NewGuid().ToString("N", Cultures.Invariant));
 
             var tagHelperOutput = new TagHelperOutput("div",
                 new TagHelperAttributeList(),
