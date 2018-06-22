@@ -84,6 +84,33 @@ Adds CSS classes in HTML element.
 <div class="foundation foo">content</div>
 ```
 
+#### DisplayNameForTagHelper
+
+Adds display name attribute into content of HTML element.
+
+```csharp
+class ComicGirl
+{
+    [Display(Name = "Abababa")]
+    public string Moeta { get; set; }
+
+    public int Something { get; set; }
+}
+```
+
+```html
+<!-- razor -->
+@model ComicGirl
+<span asp-display-name-for="Moeta"></span>
+<span asp-display-name-for="Something"></span>
+```
+
+```html
+<!-- html -->
+<span>Abababa</span>
+<span>Something</span>
+```
+
 ### IIS
 
 As long as IIS injects some headers you can clean up headers configuring your ``web.config``
