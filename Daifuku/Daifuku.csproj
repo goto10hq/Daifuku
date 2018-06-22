@@ -11,7 +11,7 @@
     <PackageProjectUrl>https://github.com/goto10hq/Daifuku</PackageProjectUrl>
     <Summary>AspNetCore almighty overlord that is too sweet for you.</Summary>
     <Description>AspNetCore almighty overlord that is too sweet for you.</Description>
-    <PackageTags>aspnetcore middleware</PackageTags>
+    <PackageTags>aspnetcore middleware taghelpers</PackageTags>
     <Copyright>Copyright (c) 2018 Goto10 s.r.o.</Copyright>
     <Company>Goto10</Company>
     <RepositoryUrl>https://github.com/goto10hq/Daifuku</RepositoryUrl>
