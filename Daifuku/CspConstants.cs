@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Daifuku
+﻿namespace Daifuku
 {
     public static class CspConstants
     {
@@ -17,7 +13,7 @@ namespace Daifuku
         public const string Self = @"'self'";
 
         /// <summary>
-        /// Allows the use of inline resources, such as inline <script> elements, javascript: URLs, inline event handlers, and inline <style> elements. You must include the single quotes.
+        /// Allows the use of inline resources, such as inline &lt;script&gt; elements, javascript: URLs, inline event handlers, and inline &lt;style&gt; elements. You must include the single quotes.
         /// </summary>
         public const string UnsafeInline = "unsafe-inline";
 
@@ -44,51 +40,24 @@ namespace Daifuku
         public static string Nonce(string base64Value) => NonceHyphenTag + base64Value;
 
         /// <summary>
-        /// A sha256, of inline scripts or styles. When generating the hash, don't include the <script> or <style> tags and note that capitalization and whitespace matter, including leading or trailing whitespace.
+        /// A sha256, of inline scripts or styles. When generating the hash, don't include the &lt;script;&gt; or &lt;style;&gt; tags and note that capitalization and whitespace matter, including leading or trailing whitespace.
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
         public static string Sha256(string hash) => Sha256Tag + hash;
 
         /// <summary>
-        /// A sha384 of inline scripts or styles. When generating the hash, don't include the <script> or <style> tags and note that capitalization and whitespace matter, including leading or trailing whitespace.
+        /// A sha384 of inline scripts or styles. When generating the hash, don't include the &lt;script;&gt; or &lt;style;&gt; tags and note that capitalization and whitespace matter, including leading or trailing whitespace.
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
         public static string Sha384(string hash) => Sha384Tag + hash;
 
         /// <summary>
-        /// A sha512 of inline scripts or styles. When generating the hash, don't include the <script> or <style> tags and note that capitalization and whitespace matter, including leading or trailing whitespace.
+        /// A sha512 of inline scripts or styles. When generating the hash, don't include the &lt;script;&gt; or &lt;style;&gt; tags and note that capitalization and whitespace matter, including leading or trailing whitespace.
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
         public static string Sha512(string hash) => Sha512Tag + hash;
-
-        public static class Schemes
-        {
-            /// <summary>
-            /// Allows data: URIs to be used as a content source. This is insecure; an attacker can also inject arbitrary data: URIs. Use this sparingly and definitely not for scripts.
-            /// </summary>
-            public const string Data = "data:";
-
-            /// <summary>
-            /// Allows mediastream: URIs to be used as a content source.
-            /// </summary>
-            public const string MediaStream = "mediastream:";
-
-            /// <summary>
-            /// Allows blob: URIs to be used as a content source.
-            /// </summary>
-            public const string Blob = "blob:";
-
-            /// <summary>
-            /// Allows filesystem: URIs to be used as a content source.
-            /// </summary>
-            public const string FileSystem = "filesystem:";
-
-            public const string Http = "http:";
-
-            public const string Https = "https:";
-        }
     }
 }

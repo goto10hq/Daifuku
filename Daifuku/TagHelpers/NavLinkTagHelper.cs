@@ -37,7 +37,7 @@ namespace Daifuku.TagHelpers
 
             if (ShouldBeActive())
             {
-                MakeActive(output);
+                NavLinkTagHelper.MakeActive(this, output);
             }
         }
 
@@ -70,7 +70,7 @@ namespace Daifuku.TagHelpers
             return true;
         }
 
-        void MakeActive(TagHelperOutput output)
+        static void MakeActive(NavLinkTagHelper instance, TagHelperOutput output)
         {
             var classAttr = output.Attributes.FirstOrDefault(a => a.Name == "class");
 

@@ -21,8 +21,7 @@ namespace Daifuku.Tests
 
             var me = new ModelExpression(name, modelMetadataProvider
                 .GetModelExplorerForType(typeof(Model), null)
-                .GetExplorerForProperty(name)
-                );
+                .GetExplorerForProperty(name));
 
             var dn = me.ModelExplorer.Metadata.GetDisplayName();
 

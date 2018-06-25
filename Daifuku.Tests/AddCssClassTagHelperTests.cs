@@ -1,6 +1,7 @@
 ﻿using Daifuku.Extensions;
 using Daifuku.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using Sushi2;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace Daifuku.Tests
             var tagHelperContext = new TagHelperContext(
                             new TagHelperAttributeList(),
                             new Dictionary<object, object>(),
-                            Guid.NewGuid().ToString("N"));
+                            Guid.NewGuid().ToString("N", Cultures.Invariant));
 
             var tagHelperOutput = new TagHelperOutput("div",
                 new TagHelperAttributeList(),
@@ -57,7 +58,7 @@ namespace Daifuku.Tests
             var tagHelperContext = new TagHelperContext(
                             new TagHelperAttributeList(),
                             new Dictionary<object, object>(),
-                            Guid.NewGuid().ToString("N"));
+                            Guid.NewGuid().ToString("N", Cultures.Invariant));
 
             var tagHelperOutput = new TagHelperOutput("div",
                 new TagHelperAttributeList(),
@@ -88,7 +89,7 @@ namespace Daifuku.Tests
             var tagHelperContext = new TagHelperContext(
                             new TagHelperAttributeList(),
                             new Dictionary<object, object>(),
-                            Guid.NewGuid().ToString("N"));
+                            Guid.NewGuid().ToString("N", Cultures.Invariant));
 
             var tagHelperOutput = new TagHelperOutput("div",
                 new TagHelperAttributeList(),
