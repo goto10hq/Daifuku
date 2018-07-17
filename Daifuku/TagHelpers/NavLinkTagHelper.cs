@@ -37,7 +37,7 @@ namespace Daifuku.TagHelpers
 
             if (ShouldBeActive())
             {
-                NavLinkTagHelper.MakeActive(this, output);
+                MakeActive(this, output);
             }
         }
 
