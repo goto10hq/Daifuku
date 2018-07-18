@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Daifuku.Builders
 {
-    internal class ContentSecurityPolicyBuilder
+    class ContentSecurityPolicyBuilder
     {
         internal static string Build(ContentSecurityPolicy policy)
         {

@@ -28,7 +28,13 @@ namespace Daifuku.TagHelpers
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            var items = _classValues.Where(e => e.Value).Select(e => e.Key).ToList();
+            var items = _classValues?.Where(e => e.Value).Select(e => e.Key).ToList();
+
+            if (items == null)
+            {
+                base.Process(context, output);
+                return;
+            }
 
             if (!string.IsNullOrEmpty(CssClass))
             {

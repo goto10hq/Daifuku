@@ -25,19 +25,20 @@ namespace Daifuku.TagHelpers
             if ((For.Metadata.IsRequired && !IsRequired.HasValue) ||
                 (IsRequired.HasValue && IsRequired == true))
             {
-                CreateOrMergeAttribute("class", "required", output);
+                CreateOrMergeAttribute(this, "class", "required", output);
             }
 
             return base.ProcessAsync(context, output);
         }
 
-        void CreateOrMergeAttribute(string name, object content, TagHelperOutput output)
+        static void CreateOrMergeAttribute(RequiredLabelTagHelper instance, string name, object content, TagHelperOutput output)
         {
             var currentAttribute = output.Attributes.FirstOrDefault(attribute => attribute.Name == name);
 
             if (currentAttribute == null)
             {
                 var attribute = new TagHelperAttribute(name, content);
+
                 output.Attributes.Add(attribute);
             }
             else
@@ -46,6 +47,7 @@ namespace Daifuku.TagHelpers
                     name,
                     $"{currentAttribute.Value.ToString()} {content.ToString()}",
                     currentAttribute.ValueStyle);
+
                 output.Attributes.Remove(currentAttribute);
                 output.Attributes.Add(newAttribute);
             }

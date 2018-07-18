@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Daifuku.Tests
 {
-    public class HtmlContentExtensions
+    public class HtmlContentExtensionsTests
     {
         [Fact]
         public void TestSpan()

@@ -6,7 +6,7 @@
 [![Latest Version on NuGet](https://img.shields.io/nuget/v/Daifuku.svg?style=flat-square)](https://www.nuget.org/packages/Daifuku/)
 [![NuGet](https://img.shields.io/nuget/dt/Daifuku.svg?style=flat-square)](https://www.nuget.org/packages/Daifuku/)
 [![Visual Studio Team services](https://img.shields.io/vso/build/frohikey/c3964e53-4bf3-417a-a96e-661031ef862f/124.svg?style=flat-square)](https://github.com/goto10hq/Daifuku)
-[![.NETStandard 2.0](https://img.shields.io/badge/.NETStandard-2.0-blue.svg)](https://github.com/dotnet/standard/blob/master/docs/versions/netstandard2.0.md)
+[![.NETCore 2.0](https://img.shields.io/badge/.NETCore-2.0-blue.svg)](https://github.com/dotnet/core)
 
 ## What Daifuku can do?
 
@@ -66,9 +66,55 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
   // set Expect CT
   app.UseExpectCt(86400, "https://daifu.ku/report");
+
+  // set healhtz endpoint
+  app.UseHealthz(); // defeault is /healthz  
 ```
 
-## IIS
+### Tag helpers
+
+#### AddCssClassTagHelper
+
+Adds CSS classes in HTML element.
+
+```html
+<!-- razor -->
+<div class="foundation" add-css-class-foo="42 % 2 == 0" add-css-class-bar="42 % 2 != 0">content</div>
+```
+
+```html
+<!-- html -->
+<div class="foundation foo">content</div>
+```
+
+#### DisplayNameForTagHelper
+
+Adds display name attribute into content of HTML element.
+
+```csharp
+class ComicGirl
+{
+    [Display(Name = "Abababa")]
+    public string Moeta { get; set; }
+
+    public int Something { get; set; }
+}
+```
+
+```html
+<!-- razor -->
+@model ComicGirl
+<span asp-display-name-for="Moeta"></span>
+<span asp-display-name-for="Something"></span>
+```
+
+```html
+<!-- html -->
+<span>Abababa</span>
+<span>Something</span>
+```
+
+### IIS
 
 As long as IIS injects some headers you can clean up headers configuring your ``web.config``
 
