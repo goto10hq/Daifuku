@@ -66,6 +66,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
   // set Expect CT
   app.UseExpectCt(86400, "https://daifu.ku/report");
+
+  // set healhtz endpoint
+  app.UseHealthz(); // defeault is /healthz  
 ```
 
 ### Tag helpers

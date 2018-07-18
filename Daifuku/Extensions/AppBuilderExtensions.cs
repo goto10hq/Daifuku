@@ -122,5 +122,13 @@ namespace Daifuku.Extensions
                 .UseMiddleware<Middleware.ReferrerPolicy>(ReferrerPolicy.NoReferrer)
                 .UseMiddleware<XPoweredBy>("");
         }
+
+        public static IApplicationBuilder UseHealthz(this IApplicationBuilder app, string path = "/healthz")
+        {
+            if (path == null)
+                throw new ArgumentNullException(nameof(path));
+
+            return app.Map(path, appBuilder => appBuilder.UseMiddleware<HealthzMiddleware>());
+        }
     }
 }

@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Daifuku.Extensions;
-using Microsoft.AspNetCore.Rewrite;
-using Daifuku.Builders;
 using Daifuku.Exceptions;
 using Daifuku.SampleWeb.Exceptions;
 
@@ -93,6 +91,9 @@ namespace Daifuku.SampleWeb
 
             // set Expect CT
             app.UseExpectCt(86400, "https://daifu.ku/report");
+
+            // run healthz endpoint
+            app.UseHealthz("/real-healthz");
 
             app.UseStaticFiles();
 
