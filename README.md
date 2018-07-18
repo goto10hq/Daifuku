@@ -68,7 +68,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   app.UseExpectCt(86400, "https://daifu.ku/report");
 
   // set healhtz endpoint
-  app.UseHealthz(); // defeault is /healthz  
+  app.UseHealthz(); // default path is /healthz  
 ```
 
 ### Tag helpers
