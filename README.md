@@ -114,6 +114,25 @@ class ComicGirl
 <span>Something</span>
 ```
 
+#### MarkdownTagHelper
+
+```html
+<markdown>
+Learn how to build ASP.NET apps that can run anywhere now @DateTime.Now
+[Learn More](https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409){class="btn btn-default"}
+</markdown>
+```
+
+Or using model
+
+```html
+@{
+  var markdown = "And so on...";
+}
+<markdown markdown="@markdown"></markdown>
+```
+
+
 ### IIS
 
 As long as IIS injects some headers you can clean up headers configuring your ``web.config``

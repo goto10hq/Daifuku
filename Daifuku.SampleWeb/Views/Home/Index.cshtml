@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var markdown = "And so on...";
 }
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
@@ -14,9 +15,10 @@
             <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <markdown>
-                    Learn how to build ASP.NET apps that can run anywhere.
+                    Learn how to build ASP.NET apps that can run anywhere now @DateTime.Now
                     [Learn More](https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409){class="btn btn-default"}
                 </markdown>
+                <markdown markdown="@markdown"></markdown>
             </div>
         </div>
         <div class="item">
