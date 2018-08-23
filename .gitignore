@@ -14,3 +14,4 @@ Daifuku.userprefs
 /Daifuku.SampleWeb/obj
 /.vs/Daifuku/DesignTimeBuild
 /Daifuku.SampleWeb/bin/Debug/netcoreapp2.1
+/Daifuku.Tests/bin/Debug/netcoreapp2.1
