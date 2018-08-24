@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <CodeAnalysisRuleSet>../Rulez.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>

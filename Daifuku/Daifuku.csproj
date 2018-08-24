@@ -16,6 +16,7 @@
     <Company>Goto10</Company>
     <RepositoryUrl>https://github.com/goto10hq/Daifuku</RepositoryUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/goto10hq/Daifuku/master/daifuku-icon.png</PackageIconUrl>
+    <CodeAnalysisRuleSet>../Rulez.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
