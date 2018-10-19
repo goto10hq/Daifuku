@@ -13,6 +13,11 @@ namespace Daifuku
         internal const string ContentSecurityPolicy = "Content-Security-Policy";
 
         /// <summary>
+        /// Feature policy.
+        /// </summary>
+        internal const string FeaturePolicy = "Feature-Policy";
+
+        /// <summary>
         /// Ecpect CT.
         /// </summary>
         internal const string ExpectCt = "Expect-CT";
@@ -110,6 +115,30 @@ namespace Daifuku
             internal const string FormAction = "form-action";
             internal const string FrameAncestors = "frame-ancestors";
             internal const string PluginTypes = "plugin-types";
+        }
+
+        /// <summary>
+        /// Features.
+        /// </summary>
+        internal static class Features
+        {
+            internal const string Accelerometer = "accelerometer";
+            internal const string AmbientLightSensor = "ambient-light-sensor";
+            internal const string Autoplay = "autoplay";
+            internal const string Camera = "camera";
+            internal const string EncryptedMedia = "encrypted-media";
+            internal const string Fullscreen = "fullscreen";
+            internal const string Geolocation = "geolocation";
+            internal const string Gyroscope = "gyroscope";
+            internal const string Magnetometer = "magnetometer";
+            internal const string Microphone = "microphone";
+            internal const string Midi = "midi";
+            internal const string Payment = "payment";
+            internal const string PictureInPicture = "picture-in-picture";
+            internal const string Speaker = "speaker";
+            internal const string SyncXhr = "sync-xhr";
+            internal const string Usb = "usb";
+            internal const string Vr = "vr";
         }
     }
 }

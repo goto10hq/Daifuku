@@ -25,7 +25,7 @@ namespace Daifuku.Tests
                 Sandbox = SandboxOptions.AllowPointerLock
             });
 
-            Assert.Equal(@"default-src 'self' 'none' http://*.daifu.ku; script-src http://*.daifu.ku; style-src http://*.daifu.ku; img-src http://*.daifu.ku; connect-src http://*.daifu.ku; font-src http://*.daifu.ku; object-src http://*.daifu.ku; media-src http://*.daifu.ku; child-src http://*.daifu.ku; form-action http://*.daifu.ku; frame-ancestors http://*.daifu.ku; sandbox allow-pointer-lock; plugin-types http://*.daifu.ku;", builder);
+            Assert.Equal("default-src 'self' 'none' http://*.daifu.ku; script-src http://*.daifu.ku; style-src http://*.daifu.ku; img-src http://*.daifu.ku; connect-src http://*.daifu.ku; font-src http://*.daifu.ku; object-src http://*.daifu.ku; media-src http://*.daifu.ku; child-src http://*.daifu.ku; form-action http://*.daifu.ku; frame-ancestors http://*.daifu.ku; sandbox allow-pointer-lock; plugin-types http://*.daifu.ku;", builder);
         }
     }
 }

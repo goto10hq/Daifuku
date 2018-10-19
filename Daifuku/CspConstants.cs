@@ -10,7 +10,7 @@
         /// <summary>
         /// Refers to the origin from which the protected document is being served, including the same URL scheme and port number. You must include the single quotes. Some browsers specifically exclude blob and filesystem from source directives. Sites needing to allow these content types can specify them using the Data attribute. This can be found at Sources.Scheme.*
         /// </summary>
-        public const string Self = @"'self'";
+        public const string Self = "'self'";
 
         /// <summary>
         /// Allows the use of inline resources, such as inline &lt;script&gt; elements, javascript: URLs, inline event handlers, and inline &lt;style&gt; elements. You must include the single quotes.
@@ -25,7 +25,7 @@
         /// <summary>
         /// Refers to the empty set; that is, no URLs match. The single quotes are required.
         /// </summary>
-        public const string None = @"'none'";
+        public const string None = "'none'";
 
         /// <summary>
         /// The strict-dynamic source expression specifies that the trust explicitly given to a script present in the markup, by accompanying it with a nonce or a hash, shall be propagated to all the scripts loaded by that root script. At the same time, any whitelist or source expressions such as 'self' or 'unsafe-inline' will be ignored.

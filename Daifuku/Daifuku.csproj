@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <PackageId>Daifuku</PackageId>
     <Title>Daifuku</Title>
-    <Version>1.7.2</Version>
+    <Version>1.7.3</Version>
     <Authors>frohikey</Authors>
     <PackageLicenseUrl>https://github.com/goto10hq/Daifuku/blob/master/LICENSE</PackageLicenseUrl>
     <Owners>Goto10</Owners>
@@ -16,14 +16,15 @@
     <Company>Goto10</Company>
     <RepositoryUrl>https://github.com/goto10hq/Daifuku</RepositoryUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/goto10hq/Daifuku/master/daifuku-icon.png</PackageIconUrl>
+    <CodeAnalysisRuleSet>../Rulez.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Markdig" Version="0.15.2" />
+    <PackageReference Include="Markdig" Version="0.15.4" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.1.3" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 </Project>

@@ -14,15 +14,15 @@ namespace Daifuku.Tests
             _factory = factory;
         }
 
-        [Theory]
-        [InlineData("/healthz", HttpStatusCode.NotFound)]
-        [InlineData("/real-healthz", HttpStatusCode.OK)]
-        public async Task Responses(string path, HttpStatusCode code)
-        {
-            var client = _factory.CreateClient();
-            var response = await client.GetAsync(path).ConfigureAwait(false);
+        //[Theory]
+        //[InlineData("/healthz", HttpStatusCode.NotFound)]
+        //[InlineData("/real-healthz", HttpStatusCode.OK)]
+        //public async Task Responses(string path, HttpStatusCode code)
+        //{
+        //    var client = _factory.CreateClient();
+        //    var response = await client.GetAsync(path).ConfigureAwait(false);
 
-            Assert.Equal(code, response.StatusCode);
-        }
+        //    Assert.Equal(code, response.StatusCode);
+        //}
     }
 }

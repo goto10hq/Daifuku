@@ -6,7 +6,7 @@
 [![Latest Version on NuGet](https://img.shields.io/nuget/v/Daifuku.svg?style=flat-square)](https://www.nuget.org/packages/Daifuku/)
 [![NuGet](https://img.shields.io/nuget/dt/Daifuku.svg?style=flat-square)](https://www.nuget.org/packages/Daifuku/)
 [![Visual Studio Team services](https://img.shields.io/vso/build/frohikey/c3964e53-4bf3-417a-a96e-661031ef862f/124.svg?style=flat-square)](https://github.com/goto10hq/Daifuku)
-[![.NETCore 2.0](https://img.shields.io/badge/.NETCore-2.0-blue.svg)](https://github.com/dotnet/core)
+[![.NETCore 2.0](https://img.shields.io/badge/.NETCore-2.0-blue.svg?style=flat-square)](https://github.com/dotnet/core)
 
 ## What Daifuku can do?
 
@@ -54,7 +54,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   // set custom header
   app.UseCustomHeader("X-Overlord", "Daifuku");
 
-  // set content security policy
+  // set Content Security Policy
   app.UseContentSecurityPolicy(
     new ContentSecurityPolicyBuilder()
     .WithDefaultSource(CspConstants.Self)
@@ -67,6 +67,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   // set Expect CT
   app.UseExpectCt(86400, "https://daifu.ku/report");
 
+  // set Feature Policy
+  app.UseFeaturePolicy(new FeaturePolicy
+            {
+                Autoplay = new HashSet<string> { CspConstants.Self, "http://*.daifu.ku" },
+                Geolocation = new HashSet<string> { CspConstants.None }
+            });
+            
   // set healhtz endpoint
   app.UseHealthz(); // default path is /healthz  
 ```
@@ -115,6 +122,8 @@ class ComicGirl
 ```
 
 #### MarkdownTagHelper
+
+Display Markdown converted to html using [Markdig](https://github.com/lunet-io/markdig).
 
 ```html
 <markdown>
