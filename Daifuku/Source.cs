@@ -1,6 +1,6 @@
 ﻿namespace Daifuku
 {
-    public static class CspConstants
+    public static class Source
     {
         internal static string NonceHyphenTag = "nonce-";
         internal static string Sha256Tag = "sha256-";
@@ -12,15 +12,17 @@
         /// </summary>
         public const string Self = "'self'";
 
+        public const string ScriptSource = "'script-src'";
+
         /// <summary>
         /// Allows the use of inline resources, such as inline &lt;script&gt; elements, javascript: URLs, inline event handlers, and inline &lt;style&gt; elements. You must include the single quotes.
         /// </summary>
-        public const string UnsafeInline = "unsafe-inline";
+        public const string UnsafeInline = "'unsafe-inline'";
 
         /// <summary>
         /// Allows the use of eval() and similar methods for creating code from strings. You must include the single quotes.
         /// </summary>
-        public const string UnsafeEval = "unsafe-eval";
+        public const string UnsafeEval = "'unsafe-eval'";
 
         /// <summary>
         /// Refers to the empty set; that is, no URLs match. The single quotes are required.
