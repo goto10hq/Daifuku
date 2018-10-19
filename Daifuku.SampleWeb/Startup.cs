@@ -81,17 +81,17 @@ namespace Daifuku.SampleWeb
 
             // set feature policy
             app.UseFeaturePolicy(new FeaturePolicyBuilder()
-            .WithAutoplay(CspConstants.Self)
+            .WithAutoplay(Source.Self)
             .WithAutoplay("http://*.daifu.ku")
-            .WithGeolocation(CspConstants.None)
+            .WithGeolocation(Source.None)
             .BuildPolicy());
 
             // set content security policy
             app.UseContentSecurityPolicy(new ContentSecurityPolicyBuilder()
-              .WithDefaultSource(CspConstants.Self)
+              .WithDefaultSource(Source.Self)
               .WithImageSource("*")
-              .WithFontSource(CspConstants.Self)
-              .WithFrameAncestors(CspConstants.None)
+              .WithFontSource(Source.Self)
+              .WithFrameAncestors(Source.None)
               .WithMediaSource(Schemes.MediaStream)
               .BuildPolicy());
 

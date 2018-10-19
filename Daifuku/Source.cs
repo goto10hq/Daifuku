@@ -1,6 +1,6 @@
 ﻿namespace Daifuku
 {
-    public static class CspConstants
+    public static class Source
     {
         internal static string NonceHyphenTag = "nonce-";
         internal static string Sha256Tag = "sha256-";

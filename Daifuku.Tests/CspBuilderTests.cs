@@ -10,7 +10,7 @@ namespace Daifuku.Tests
         {
             var builder = Builders.ContentSecurityPolicyBuilder.Build(new ContentSecurityPolicy
             {
-                DefaultSrc = new HashSet<string> { CspConstants.Self, CspConstants.None, "http://*.daifu.ku" },
+                DefaultSrc = new HashSet<string> { Source.Self, Source.None, "http://*.daifu.ku" },
                 ScriptSrc = new HashSet<string> { "http://*.daifu.ku" },
                 StyleSrc = new HashSet<string> { "http://*.daifu.ku" },
                 ImgSrc = new HashSet<string> { "http://*.daifu.ku" },

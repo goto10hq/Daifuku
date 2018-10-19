@@ -10,8 +10,8 @@ namespace Daifuku.Tests
         {
             var builder = Builders.FeaturePolicyBuilder.Build(new FeaturePolicy
             {
-                Autoplay = new HashSet<string> { CspConstants.Self, "http://*.daifu.ku" },
-                Geolocation = new HashSet<string> { CspConstants.None }
+                Autoplay = new HashSet<string> { Source.Self, "http://*.daifu.ku" },
+                Geolocation = new HashSet<string> { Source.None }
             });
 
             Assert.Equal("autoplay 'self' http://*.daifu.ku; geolocation 'none';", builder);
