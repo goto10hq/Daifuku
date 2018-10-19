@@ -22,7 +22,7 @@
         /// <summary>
         /// Allows the use of eval() and similar methods for creating code from strings. You must include the single quotes.
         /// </summary>
-        public const string UnsafeEval = "'unsafe-eva'l";
+        public const string UnsafeEval = "'unsafe-eval'";
 
         /// <summary>
         /// Refers to the empty set; that is, no URLs match. The single quotes are required.
