@@ -68,11 +68,11 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   app.UseExpectCt(86400, "https://daifu.ku/report");
 
   // set Feature Policy
-  app.UseFeaturePolicy(new FeaturePolicy
-            {
-                Autoplay = new HashSet<string> { CspConstants.Self, "http://*.daifu.ku" },
-                Geolocation = new HashSet<string> { CspConstants.None }
-            });
+  app.UseFeaturePolicy(new FeaturePolicyBuilder()
+    .WithAutoplay(CspConstants.Self)
+    .WithAutoplay("http://*.daifu.ku")
+    .WithGeolocation(CspConstants.None)
+    .BuildPolicy());
             
   // set healhtz endpoint
   app.UseHealthz(); // default path is /healthz  

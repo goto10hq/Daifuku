@@ -80,21 +80,20 @@ namespace Daifuku.SampleWeb
             app.UseCustomHeader("X-Overlord", "Daifuku");
 
             // set feature policy
-            app.UseFeaturePolicy(new FeaturePolicy
-            {
-                Autoplay = new HashSet<string> { CspConstants.Self, "http://*.daifu.ku" },
-                Geolocation = new HashSet<string> { CspConstants.None }
-            });
+            app.UseFeaturePolicy(new FeaturePolicyBuilder()
+            .WithAutoplay(CspConstants.Self)
+            .WithAutoplay("http://*.daifu.ku")
+            .WithGeolocation(CspConstants.None)
+            .BuildPolicy());
 
             // set content security policy
-            //app.UseContentSecurityPolicy(
-            //  new ContentSecurityPolicyBuilder()
-            //  .WithDefaultSource(CspConstants.Self)
-            //  .WithImageSource("*")
-            //  .WithFontSource(CspConstants.Self)
-            //  .WithFrameAncestors(CspConstants.None)
-            //  .WithMediaSource(CspConstants.Schemes.MediaStream)
-            //  .BuildPolicy());
+            app.UseContentSecurityPolicy(new ContentSecurityPolicyBuilder()
+              .WithDefaultSource(CspConstants.Self)
+              .WithImageSource("*")
+              .WithFontSource(CspConstants.Self)
+              .WithFrameAncestors(CspConstants.None)
+              .WithMediaSource(Schemes.MediaStream)
+              .BuildPolicy());
 
             // set Expect CT
             app.UseExpectCt(86400, "https://daifu.ku/report");
