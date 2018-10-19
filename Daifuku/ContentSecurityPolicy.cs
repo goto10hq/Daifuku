@@ -35,37 +35,37 @@ namespace Daifuku
         public HashSet<string> FontSrc { get; set; } = new HashSet<string>();
 
         /// <summary>
-        /// Defines valid sources of plugins, eg <object>, <embed> or <applet>.
+        /// <![CDATA[Defines valid sources of plugins, eg <object>, <embed> or <applet>.]]>
         /// </summary>
         public HashSet<string> ObjectSrc { get; set; } = new HashSet<string>();
 
         /// <summary>
-        /// Defines valid sources of audio and video, eg HTML5 <audio>, <video> elements.
+        /// <![CDATA[Defines valid sources of audio and video, eg HTML5 <audio>, <video> elements.]]>
         /// </summary>
         public HashSet<string> MediaSrc { get; set; } = new HashSet<string>();
 
         /// <summary>
-        /// Defines valid sources for web workers and nested browsing contexts loaded using elements such as <frame> and <iframe>
+        /// <![CDATA[Defines valid sources for web workers and nested browsing contexts loaded using elements such as <frame> and <iframe>]]>
         /// </summary>
         public HashSet<string> ChildSrc { get; set; } = new HashSet<string>();
 
         /// <summary>
-        /// Defines valid sources that can be used as a HTML <form> action.
+        /// <![CDATA[Defines valid sources that can be used as a HTML <form> action.]]>
         /// </summary>
         public HashSet<string> FormAction { get; set; } = new HashSet<string>();
 
         /// <summary>
-        /// Defines valid sources for embedding the resource using <frame> <iframe> <object> <embed> <applet>. Setting this directive to 'none' should be roughly equivalent to X-Frame-Options: DENY
+        /// <![CDATA[Defines valid sources for embedding the resource using <frame> <iframe> <object> <embed> <applet>. Setting this directive to 'none' should be roughly equivalent to X-Frame-Options: DENY]]>
         /// </summary>
         public HashSet<string> FrameAncestors { get; set; } = new HashSet<string>();
 
         /// <summary>
-        /// Defines valid MIME types for plugins invoked via <object> and <embed>. To load an <applet> you must specify application/x-java-applet.
+        /// <![CDATA[Defines valid MIME types for plugins invoked via <object> and <embed>. To load an <applet> you must specify application/x-java-applet.]]>
         /// </summary>
         public HashSet<string> PluginTypes { get; set; } = new HashSet<string>();
 
         /// <summary>
-        /// The HTTP Content-Security-Policy (CSP) sandbox directive enables a sandbox for the requested resource similar to the &liframe> sandbox attribute. It applies restrictions to a page's actions including preventing popups, preventing the execution of plugins and scripts, and enforcing a same-origin policy.
+        /// <![CDATA[The HTTP Content-Security-Policy (CSP) sandbox directive enables a sandbox for the requested resource similar to the <iframe> sandbox attribute. It applies restrictions to a page's actions including preventing popups, preventing the execution of plugins and scripts, and enforcing a same-origin policy.]]>
         /// </summary>
         public BaseSandboxOptions Sandbox { get; set; } = null;
     }

@@ -79,6 +79,13 @@ namespace Daifuku.SampleWeb
             // set custom header
             app.UseCustomHeader("X-Overlord", "Daifuku");
 
+            // set feature policy
+            app.UseFeaturePolicy(new FeaturePolicy
+            {
+                Autoplay = new HashSet<string> { CspConstants.Self, "http://*.daifu.ku" },
+                Geolocation = new HashSet<string> { CspConstants.None }
+            });
+
             // set content security policy
             //app.UseContentSecurityPolicy(
             //  new ContentSecurityPolicyBuilder()

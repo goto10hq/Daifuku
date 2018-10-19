@@ -54,7 +54,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   // set custom header
   app.UseCustomHeader("X-Overlord", "Daifuku");
 
-  // set content security policy
+  // set Content Security Policy
   app.UseContentSecurityPolicy(
     new ContentSecurityPolicyBuilder()
     .WithDefaultSource(CspConstants.Self)
@@ -67,6 +67,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   // set Expect CT
   app.UseExpectCt(86400, "https://daifu.ku/report");
 
+  // set Feature Policy
+  app.UseFeaturePolicy(new FeaturePolicy
+            {
+                Autoplay = new HashSet<string> { CspConstants.Self, "http://*.daifu.ku" },
+                Geolocation = new HashSet<string> { CspConstants.None }
+            });
+            
   // set healhtz endpoint
   app.UseHealthz(); // default path is /healthz  
 ```
