@@ -1,5 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <PackageId>Daifuku</PackageId>
@@ -18,13 +17,14 @@
     <PackageIconUrl>https://raw.githubusercontent.com/goto10hq/Daifuku/master/daifuku-icon.png</PackageIconUrl>
     <CodeAnalysisRuleSet>../Rulez.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Markdig" Version="0.15.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.1.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.1.3" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Markdig" Version="0.15.4"/>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.1.3"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.3"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.1.3"/>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2"/>
+    <PackageReference Include="TimeZoneConverter" Version="2.4.2" />
+    <PackageReference Include="Momo.Tokens" Version="1.2.1" />
   </ItemGroup>
 </Project>

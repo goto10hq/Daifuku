@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Daifuku.Extensions;
 using Daifuku.Exceptions;
 using Daifuku.SampleWeb.Exceptions;
+using Momo.Tokens;
 
 namespace Daifuku.SampleWeb
 {
@@ -25,6 +26,9 @@ namespace Daifuku.SampleWeb
             {
                 config.Filters.Add(typeof(ApplicationExceptionFilter<AppException>));
             });
+
+            services.AddSingleton<IUniversalTimeConfiguration>(new UniversalTimeConfiguration("Central European Standard Time"));
+            services.AddUniversalTime();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
