@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daifuku", "Daifuku\Daifuku.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daifuku.Tests", "Daifuku.Tests\Daifuku.Tests.csproj", "{34A07884-D543-4A91-95D7-68A95764B237}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daifuku.SampleWeb", "Daifuku.SampleWeb\Daifuku.SampleWeb.csproj", "{F5495293-04D8-4EF4-8FD3-E25F46948FC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daifuku.SampleWeb", "Daifuku.SampleWeb\Daifuku.SampleWeb.csproj", "{F5495293-04D8-4EF4-8FD3-E25F46948FC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

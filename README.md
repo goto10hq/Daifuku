@@ -2,11 +2,11 @@
 
 # Daifuku
 
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Latest Version on NuGet](https://img.shields.io/nuget/v/Daifuku.svg?style=flat-square)](https://www.nuget.org/packages/Daifuku/)
-[![NuGet](https://img.shields.io/nuget/dt/Daifuku.svg?style=flat-square)](https://www.nuget.org/packages/Daifuku/)
-[![Visual Studio Team services](https://img.shields.io/vso/build/frohikey/c3964e53-4bf3-417a-a96e-661031ef862f/124.svg?style=flat-square)](https://github.com/goto10hq/Daifuku)
-[![.NETCore 2.0](https://img.shields.io/badge/.NETCore-2.0-blue.svg?style=flat-square)](https://github.com/dotnet/core)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
+[![Latest Version on NuGet](https://img.shields.io/nuget/v/Daifuku.svg)](https://www.nuget.org/packages/Daifuku/)
+[![NuGet](https://img.shields.io/nuget/dt/Daifuku.svg)](https://www.nuget.org/packages/Daifuku/)
+[![.NETCore 2.0](https://img.shields.io/badge/.NETCore-2.0-blue.svg)](https://github.com/dotnet/core)
+[![Build status](https://frohikey.visualstudio.com/Goto10/_apis/build/status/NUGET/Daifuku)](https://frohikey.visualstudio.com/Goto10/_build/latest?definitionId=124)
 
 ## What Daifuku can do?
 
