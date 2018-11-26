@@ -145,7 +145,32 @@ Or using model
 
 #### UniversalTime
 
+Simple service returning a current time for a given timezone or UTC if not set.
 
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{  
+  services.AddSingleton<IUniversalTimeConfiguration>(new UniversalTimeConfiguration("Central European Standard Time"));
+  services.AddUniversalTime();
+
+  // or
+
+  services.AddUniversalTime("Central European Standard Time");
+
+  // or
+
+  services.AddUniversalTime(); // UTC time
+}
+```
+
+Inject anywhere
+
+```csharp
+public Ctor(IUniversalTime universalTime)
+{
+  var now = universalTime.Now;
+}
+```
 
 ### IIS
 
