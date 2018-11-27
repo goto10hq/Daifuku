@@ -10,8 +10,18 @@ namespace Daifuku.Services
     public class UniversalTime : IUniversalTime
     {
         readonly string _timezone;
+        readonly TimeZoneInfo _timeZoneInfo;
 
-        TimeZoneInfo _timeZoneInformation => _timezone == null ? TimeZoneInfo.Utc : TZConvert.GetTimeZoneInfo(_timezone);
+        TimeZoneInfo _timeZoneInformation
+        {
+            get
+            {
+                if (_timeZoneInfo != null)
+                    return _timeZoneInfo;
+
+                return _timezone == null ? TimeZoneInfo.Utc : TZConvert.GetTimeZoneInfo(_timezone);
+            }
+        }
 
         /// <summary>
         /// Get current datetime.
@@ -32,6 +42,15 @@ namespace Daifuku.Services
         public UniversalTime(string timezone)
         {
             _timezone = timezone ?? throw new ArgumentNullException(nameof(timezone));
+        }
+
+        /// <summary>
+        /// Initialize universal time with a given timezone.
+        /// </summary>
+        /// <param name="timeZoneInfo">Timezone info.</param>
+        public UniversalTime(TimeZoneInfo timeZoneInfo)
+        {
+            _timeZoneInfo = timeZoneInfo;
         }
 
         /// <summary>

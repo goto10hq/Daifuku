@@ -1,3 +1,4 @@
+using System;
 using Daifuku.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Momo.Tokens;
@@ -36,6 +37,17 @@ namespace Daifuku.Extensions
         public static IServiceCollection AddUniversalTime(this IServiceCollection services, IUniversalTimeConfiguration universalTimeConfiguration)
         {
             return services.AddTransient<IUniversalTime>(_ => new UniversalTime(universalTimeConfiguration));
+        }
+
+         /// <summary>
+        /// Add universal time service.
+        /// </summary>
+        /// <param name="services">A collection of services.</param>
+        /// <param name="timeZoneInformation">Timezone information.</param>
+        /// <returns>A collection of services.</returns>
+        public static IServiceCollection AddUniversalTime(this IServiceCollection services, TimeZoneInfo timeZoneInfo)
+        {
+            return services.AddTransient<IUniversalTime>(_ => new UniversalTime(timeZoneInfo));
         }
     }
 }
