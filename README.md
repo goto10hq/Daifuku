@@ -159,7 +159,11 @@ public void ConfigureServices(IServiceCollection services)
 
   // or
 
-  services.AddUniversalTime(); // UTC time
+  services.AddUniversalTime(); // default is UTC time
+
+  // or
+
+  services.AddUniversalTime(TimeZoneInfo.Local); // provide directly TimeZoneInfo
 }
 ```
 
