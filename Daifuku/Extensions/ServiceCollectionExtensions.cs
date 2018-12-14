@@ -39,11 +39,11 @@ namespace Daifuku.Extensions
             return services.AddTransient<IUniversalTime>(_ => new UniversalTime(universalTimeConfiguration));
         }
 
-         /// <summary>
+        /// <summary>
         /// Add universal time service.
         /// </summary>
         /// <param name="services">A collection of services.</param>
-        /// <param name="timeZoneInformation">Timezone information.</param>
+        /// <param name="timeZoneInfo">Timezone information.</param>
         /// <returns>A collection of services.</returns>
         public static IServiceCollection AddUniversalTime(this IServiceCollection services, TimeZoneInfo timeZoneInfo)
         {
