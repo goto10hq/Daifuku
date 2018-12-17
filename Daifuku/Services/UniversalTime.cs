@@ -26,7 +26,14 @@ namespace Daifuku.Services
         /// <summary>
         /// Get current datetime.
         /// </summary>
-        public DateTime Now => TimeZoneInfo.ConvertTime(DateTime.Now, _timeZoneInformation);
+        public DateTime Now => GetDateTime(DateTime.Now);
+
+        /// <summary>
+        /// Get datetime.
+        /// </summary>
+        /// <param name="dateTime">Datetime.</param>
+        /// <returns>Datetime for a give time zone info.</returns>
+        public DateTime GetDateTime(DateTime dateTime) => TimeZoneInfo.ConvertTime(dateTime, _timeZoneInformation);
 
         /// <summary>
         /// Create universal time.

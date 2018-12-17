@@ -9,7 +9,14 @@ namespace Daifuku.Services
     {
         /// <summary>
         /// Get current datetime.
-        /// </summary>        
+        /// </summary>
         DateTime Now { get; }
+
+        /// <summary>
+        /// Get datetime.
+        /// </summary>
+        /// <param name="dateTime">Datetime.</param>
+        /// <returns>Datetime for a give time zone info.</returns>
+        DateTime GetDateTime(DateTime dateTime);
     }
 }
