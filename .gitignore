@@ -15,4 +15,5 @@ Daifuku.userprefs
 /.vs/Daifuku/DesignTimeBuild
 /Daifuku.SampleWeb/bin/Debug/netcoreapp2.1
 /Daifuku.Tests/bin/Debug/netcoreapp2.1
+/Daifuku.SampleWeb/bin/Debug/netcoreapp2.2
 /.vs/Daifuku/DesignTimeBuild/.dtbcache

@@ -7,6 +7,7 @@ using Daifuku.Extensions;
 using Daifuku.Exceptions;
 using Daifuku.SampleWeb.Exceptions;
 using Momo.Tokens;
+using System;
 
 namespace Daifuku.SampleWeb
 {
@@ -28,6 +29,7 @@ namespace Daifuku.SampleWeb
             });
 
             services.AddSingleton<IUniversalTimeConfiguration>(new UniversalTimeConfiguration("Central European Standard Time"));
+            //services.AddUniversalTime(TimeZoneInfo.Local);
             services.AddUniversalTime();
         }
 
