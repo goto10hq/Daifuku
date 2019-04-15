@@ -15,7 +15,10 @@ namespace Daifuku.TagHelpers
 
         public MarkdownTagHelper()
         {
-            _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
+            _pipeline = new MarkdownPipelineBuilder()
+                .UseAdvancedExtensions()
+                .UseSoftlineBreakAsHardlineBreak()
+                .Build();
         }
 
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
@@ -28,8 +31,8 @@ namespace Daifuku.TagHelpers
 
             if (content == null)
             {
-                content = (await output.GetChildContentAsync(NullHtmlEncoder.Default).ConfigureAwait(false))
-                               .GetContent(NullHtmlEncoder.Default);
+                var c = await output.GetChildContentAsync(NullHtmlEncoder.Default).ConfigureAwait(false);
+                content = c.GetContent(NullHtmlEncoder.Default);
             }
 
             if (string.IsNullOrEmpty(content))
